@@ -1,22 +1,27 @@
 <ion-view view-title="{{ctrl.title}}" >
   <ion-content >
 	<h1 align="center">I Copa IFly Brasilia</h1>
-	<img class="full-image" src="https://www.iflyworld.com/brasilia/wp-content/themes/ifly/assets/images/bg-masthead-video.jpg" />
+<div class="list card">
 
-	<video autoplay="" muted="" preload="" loop="" width="auto" height="100%" 
-			poster="https://www.iflyworld.com/brasilia/wp-content/themes/ifly/assets/images/bg-masthead-video.jpg">
-			<source src="//skyventure.s3.amazonaws.com/media/ifly-video-bg.mp4" 
-				type="video/mp4">
-	</video>
+  <div class="item item-avatar">
+    <img ng-src="https://www.iflyworld.com/brasilia/wp-content/themes/ifly/assets/images/bg-masthead-video.jpg">
+    <h2>Marty McFly</h2>
+    <p>November 05, 2016</p>
+  </div>
 
-	<ion-footer-bar align-title="left" class="bar-assertive">
-	  <div class="buttons">
-	    <button class="button">Left Button</button>
-	  </div>
-	  <h1 class="title">Title!</h1>
-	  <div class="buttons" ng-click="doSomething()">
-	    <button class="button">Right Button</button>
-	  </div>
-	</ion-footer-bar>
+  <div class="item item-body">
+    <img class="full-image" ng-src="https://www.iflyworld.com/brasilia/wp-content/themes/ifly/assets/images/bg-masthead-video.jpg">
+    <p>
+      This is a "Facebook" styled Card. The header is created from a Thumbnail List item,
+      the content is from a card-body consisting of an image and paragraph text. The footer
+      consists of tabs, icons aligned left, within the card-footer.
+    </p>
+    <p>
+      <a href="#" class="subdued">1 Like</a>
+      <a href="#" class="subdued">5 Comments</a>
+    </p>
+  </div>
+
+</div>
   </ion-content>
 </ion-view>

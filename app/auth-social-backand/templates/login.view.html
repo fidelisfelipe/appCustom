@@ -1,23 +1,27 @@
-<ion-view view-title="Account">
+<ion-view view-title="IFly">
   <!-- do you want padding? -->
-  <ion-content class="padding">
-	  <!-- where login on -->
+  <ion-content class="padding"  >
+    <!-- where login on -->
 	<div ng-show="vm.currentUser.isAuthorized">
    		<div class="button-bar" ng-show="vm.currentUser.isAuthorized">
 			<button class="button button-block button-assertive ion-power" ng-click="vm.signout()" type="button" ng-show="vm.currentUser.isAuthorized">
 			</button>
 		</div>
-		<div class="list card">
-		  <div class="item item-avatar">
-		    <img ng-src="main/assets/images/profile.jpg">
-		    <h2>{{vm.currentUser.firstName}} {{vm.currentUser.lastName}}</h2>
-		    <p>{{vm.currentUser.username}}</p>
-		  </div>
+		<div class="list">
+		<a class="item item-thumbnail-left" href="#">
+	      <img ng-src="auth-social-backand/assets/images/yo@2x.png">
+	      <h2>{{vm.currentUser.firstName}} {{vm.currentUser.lastName}}
+	      <br>
+	      {{vm.currentUser.username}}
+		  </h2> 
+	    </a>
+	    <a class="item item-thumbnail-left button-block" href="#"
+		      ng-click="vm.showUpdate = !vm.showUpdate" ng-class="{'button button-stable': !vm.showUpdate, 'button button-positive': vm.showUpdate}" >
+			   <i class="icon ion-person"></i>
+		  </a>
 		</div>
-
 	</div>
-
-<!-- login on - update data -->
+	<!-- login on - update data -->
 	<div class="list" ng-show="vm.currentUser.isAuthorized && vm.showUpdate">
         <div class="button-bar" >
 			<button class="button button-block button-positive ion-gear-a" ng-click="vm.updatePwd = !vm.updatePwd;" ng-class="{'button button-block button-stable': vm.updatePwd, 'button button-block button-positive': !vm.updatePwd}">
@@ -43,12 +47,10 @@
 		</div>
 		<div class="button-bar" >
 			<button class="button button-block button-positive" ng-click="vm.updateAccount()">
-				Update
+				Save Data Base
 			</button>
 		</div>
 	</div>
-
-<!-- off line -->
 	<!-- where login off -->
 <form ng-submit="vm.signin()" ng-hide="vm.currentUser.isAuthorized">
 	<h3 style="text-align: center">Login</h3>
@@ -86,5 +88,6 @@
 		Google+
 	</button>
 </div>
+	
   </ion-content>
 </ion-view>

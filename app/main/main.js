@@ -15,14 +15,14 @@ angular.module('main', [
       url: '/main',
       abstract: true,
       templateUrl: 'main/templates/menu.html',
-      controller: 'MenuCtrl as ctrl'
+      controller: 'AuthSocialBackandCtrl as vm',
     })
      .state('main.account', {
        url: '/account',
        views: {
          'pageContent': {
            templateUrl: 'main/templates/account.html',
-           controller: 'AccountCtrl as ctrl'
+           controller: 'AuthSocialBackandCtrl as vm',
          }
        }
      })
