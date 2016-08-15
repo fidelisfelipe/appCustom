@@ -8,30 +8,71 @@ angular.module('main', [
 .config(function ($stateProvider, $urlRouterProvider) {
 
   // ROUTING with ui.router
-  $urlRouterProvider.otherwise('/main/list');
+  $urlRouterProvider.otherwise('/main/home');
   $stateProvider
     // this state is placed in the <ion-nav-view> in the index.html
     .state('main', {
       url: '/main',
       abstract: true,
       templateUrl: 'main/templates/menu.html',
-      controller: 'MenuCtrl as menu'
+      controller: 'MenuCtrl as ctrl'
     })
-      .state('main.list', {
-        url: '/list',
+     .state('main.account', {
+       url: '/account',
+       views: {
+         'pageContent': {
+           templateUrl: 'main/templates/account.html',
+           controller: 'AccountCtrl as ctrl'
+         }
+       }
+     })
+     .state('main.facebook', {
+       url: '/facebook',
+       views: {
+         'pageContent': {
+           templateUrl: 'main/templates/facebook.html',
+           controller: 'FacebookCtrl as ctrl'
+         }
+       }
+     })
+     .state('main.home', {
+       url: '/home',
+       views: {
+         'pageContent': {
+           templateUrl: 'main/templates/home.html',
+           controller: 'HomeCtrl as ctrl'
+         }
+       }
+     })
+     .state('main.about', {
+       url: '/about',
+       views: {
+         'pageContent': {
+           templateUrl: 'main/templates/about.html'
+         }
+       }
+     })
+     .state('main.inscription', {
+       url: '/inscription',
+       views: {
+         'pageContent': {
+           templateUrl: 'main/templates/inscription.html'
+         }
+       }
+     })
+      .state('main.regulation', {
+        url: '/regulation',
         views: {
           'pageContent': {
-            templateUrl: 'main/templates/list.html',
-            // controller: '<someCtrl> as ctrl'
+            templateUrl: 'main/templates/regulation.html'
           }
         }
       })
-      .state('main.listDetail', {
-        url: '/list/detail',
+      .state('main.ranking', {
+        url: '/ranking',
         views: {
           'pageContent': {
-            templateUrl: 'main/templates/list-detail.html',
-            controller: 'ListCtrl as ctrl'
+            templateUrl: 'main/templates/ranking.html'
           }
         }
       })

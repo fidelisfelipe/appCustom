@@ -1,15 +1,22 @@
-<ion-view view-title="Home">
-  <ion-content>
-  <ion-list>
-      <ion-item
-        class="item-remove-animate item-avatar item-icon-right"
-        type="item-text-wrap"
-        ui-sref="main.menu">
-        <h2>Menu</h2>
-        <p>menu food </p>
-        <i class="icon ion-chevron-right icon-accessory"></i>
-      </ion-item>
-    </ion-list>
+<ion-view view-title="{{ctrl.title}}" >
+  <ion-content >
+	<h1 align="center">I Copa IFly Brasilia</h1>
+	<img class="full-image" src="https://www.iflyworld.com/brasilia/wp-content/themes/ifly/assets/images/bg-masthead-video.jpg" />
 
+	<video autoplay="" muted="" preload="" loop="" width="auto" height="100%" 
+			poster="https://www.iflyworld.com/brasilia/wp-content/themes/ifly/assets/images/bg-masthead-video.jpg">
+			<source src="//skyventure.s3.amazonaws.com/media/ifly-video-bg.mp4" 
+				type="video/mp4">
+	</video>
+
+	<ion-footer-bar align-title="left" class="bar-assertive">
+	  <div class="buttons">
+	    <button class="button">Left Button</button>
+	  </div>
+	  <h1 class="title">Title!</h1>
+	  <div class="buttons" ng-click="doSomething()">
+	    <button class="button">Right Button</button>
+	  </div>
+	</ion-footer-bar>
   </ion-content>
 </ion-view>

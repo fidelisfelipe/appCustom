@@ -26,24 +26,42 @@
 
     <!-- menu header -->
     <ion-header-bar class="bar-positive">
-      <h1 class="title">Nav</h1>
+      <h1 class="title"><img src="main/assets/images/logo_blue@2x.png"/></h1>
     </ion-header-bar>
 
     <!-- menu content -->
     <ion-content>
       <ion-list>
-        <ion-item menu-close ui-sref="main.list">
-          List
+        <ion-item menu-close ui-sref="main.home">
+          Home
+        </ion-item>
+        <ion-item menu-close ui-sref="main.account">
+          Account
+        </ion-item>
+        <ion-item menu-close ui-sref="authSocialBackandLogin">
+          Facebook
+        </ion-item>
+        <ion-item menu-close ui-sref="main.inscription">
+		  Inscription
+        </ion-item>
+        <ion-item menu-close ui-sref="main.regulation">
+          Regulamento
+        </ion-item>
+        <ion-item menu-close ui-sref="main.ranking">
+          Ranking
         </ion-item>
         <ion-item menu-close ui-sref="main.debug">
           Debug
         </ion-item>
+        <ion-item menu-close ui-sref="main.news">
+          <i class="icon ion-person-stalker"></i>
+	      News
+	      <span class="badge badge-assertive">1</span>
+        </ion-item>
+        <ion-item menu-close ui-sref="main.about">
+          About
+        </ion-item>	
       </ion-list>
-              <a class="item item-icon-left" href="#">
-	    <i class="icon ion-person-stalker"></i>
-	    Pedidos
-	    <span class="badge badge-assertive">0</span>
-	    </a>
     </ion-content>
 
   </ion-side-menu>
