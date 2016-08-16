@@ -1,0 +1,293 @@
+[33mcommit e0bb494bf900490f2096ca2e87d1a502fc2798d2[m
+Author: Fidelis <atosfiel@gmail.com>
+Date:   Mon Aug 15 23:05:31 2016 -0300
+
+    change build gulp template
+
+[33mcommit 0480e62e2ff0f739b48f8c3c7e93f5c3c074c3f9[m
+Author: Fidelis <atosfiel@gmail.com>
+Date:   Mon Aug 15 20:22:00 2016 -0300
+
+    add changes login
+
+[33mcommit cea033fb74bf1b0db375109bdeee989680fc28b6[m
+Author: Fidelis <atosfiel@gmail.com>
+Date:   Sun Aug 14 23:44:07 2016 -0300
+
+    add home
+
+[33mcommit 2df6d4b77a447892ddd1db549a78a8f1a14e3660[m
+Author: Fidelis <atosfiel@gmail.com>
+Date:   Wed Aug 3 14:36:25 2016 -0300
+
+    add count pedidos menu
+
+[33mcommit 16be328df998d6b043f22a1e1bddebd5ac95abfa[m
+Author: Fidelis <atosfiel@gmail.com>
+Date:   Wed Aug 3 13:41:19 2016 -0300
+
+    add button detail list
+
+[33mcommit f965ecb2df218e0c8f1fc18158835472869dd7f0[m
+Author: Fidelis <atosfiel@gmail.com>
+Date:   Tue Aug 2 23:06:58 2016 -0300
+
+    init project delivery food
+
+[33mcommit 3caa5dd12cd1a7337ddeb9857cbe4a3e80e284bb[m
+Author: fidelisfelipe <atosfiel@gmail.com>
+Date:   Mon Jul 4 15:27:29 2016 -0300
+
+    add cors fix for requests
+
+[33mcommit cd14f2b470e4278fd94c52fbe22adb2fc7f2f54f[m
+Author: fidelisfelipe <atosfiel@gmail.com>
+Date:   Fri Jul 1 18:04:03 2016 -0300
+
+    ajustes frontend cors
+
+[33mcommit b7a56635e911c211e26f525e407a79817698d99f[m
+Author: fidelisfelipe <atosfiel@gmail.com>
+Date:   Thu Jun 30 10:53:08 2016 -0300
+
+    add interval test backend
+
+[33mcommit 2b283b3c28f05e88dabd5acc6e97782007f84e2f[m
+Author: fidelisfelipe <atosfiel@gmail.com>
+Date:   Wed Jun 29 17:53:58 2016 -0300
+
+    fix html compile
+
+[33mcommit b3f9bf87713813d5621f012caccbce44e4ebd402[m
+Author: fidelisfelipe <atosfiel@gmail.com>
+Date:   Wed Jun 29 17:49:26 2016 -0300
+
+    add loading, test router, show end hide router end perfums
+
+[33mcommit 1d02485e1106544b257d38d69d88a27b5090675c[m
+Author: fidelisfelipe <atosfiel@gmail.com>
+Date:   Tue Jun 28 18:27:28 2016 -0300
+
+    add uri's working debug
+
+[33mcommit fe4e9e25e1fc71233804126702c0cd234acc79fa[m
+Author: fidelisfelipe <atosfiel@gmail.com>
+Date:   Wed Jun 22 17:43:16 2016 -0300
+
+    update debug dash
+
+[33mcommit ecf3750a02bbd332dc0cca5b417e1af3f43973dd[m
+Author: fidelisfelipe <atosfiel@gmail.com>
+Date:   Wed Jun 22 17:19:57 2016 -0300
+
+    add test debug backend
+
+[33mcommit fa7c4e730c64b2f9ec12f56eadb865323726d542[m
+Author: fidelisfelipe <atosfiel@gmail.com>
+Date:   Wed Jun 22 14:08:01 2016 -0300
+
+    config backend req test
+
+[33mcommit 2781e35cb3ec5df3d7e3195340d47e18d4b5c466[m
+Author: fidelisfelipe <atosfiel@gmail.com>
+Date:   Wed Jun 22 14:00:09 2016 -0300
+
+    config backend req test
+
+[33mcommit 699877a3e304ba1391142cfcd5e44de721e2de6a[m
+Author: fidelisfelipe <atosfiel@gmail.com>
+Date:   Wed Jun 22 13:54:50 2016 -0300
+
+    add var backend request
+
+[33mcommit 5ccc79cd10f2730228aeb9dab677d1e019ee6479[m
+Author: fidelisfelipe <atosfiel@gmail.com>
+Date:   Wed Jun 22 12:18:25 2016 -0300
+
+    add page custom error
+
+[33mcommit 2877dfd6be10107532862892b482fc1bcfcf0021[m
+Author: fidelisfelipe <atosfiel@gmail.com>
+Date:   Wed Jun 22 12:13:27 2016 -0300
+
+    add page custom error
+
+[33mcommit 406a192c61ab3a513ec206fa29a89fe458d5930b[m
+Author: fidelisfelipe <atosfiel@gmail.com>
+Date:   Wed Jun 22 11:56:40 2016 -0300
+
+    update task serve for serve-prod
+
+[33mcommit 28906ff68c30f6ad996d60ef780f5ade81e5eaf9[m
+Author: fidelisfelipe <atosfiel@gmail.com>
+Date:   Wed Jun 22 11:53:10 2016 -0300
+
+    update task serve for serve-prod
+
+[33mcommit 84de88c3f5d7e9a9b3803d0abe7b7821b4583f04[m
+Author: fidelisfelipe <atosfiel@gmail.com>
+Date:   Wed Jun 22 11:52:08 2016 -0300
+
+    update task serve for serve-prod
+
+[33mcommit b57cf7dc756b49d0ed0b068c55cccadafe36959d[m
+Author: fidelisfelipe <atosfiel@gmail.com>
+Date:   Wed Jun 22 11:36:53 2016 -0300
+
+    update package.js for use prod
+
+[33mcommit 76f00250ce5713ed96978ce7c052e9b80fca6828[m
+Author: fidelisfelipe <atosfiel@gmail.com>
+Date:   Wed Jun 22 11:33:30 2016 -0300
+
+    update package.js for use prod
+
+[33mcommit 9f019825cb1f300e6ca5d8af2b3e4d126cdd4c96[m
+Author: fidelisfelipe <atosfiel@gmail.com>
+Date:   Wed Jun 22 11:29:50 2016 -0300
+
+    update package.js for use prod
+
+[33mcommit 063e353c942798f093d9cf897dbe0a96244b6539[m
+Author: fidelisfelipe <atosfiel@gmail.com>
+Date:   Wed Jun 22 11:05:43 2016 -0300
+
+    update package.js for use prod
+
+[33mcommit bede963eb57e15c3c6d92b9f5409378c105e2d8c[m
+Author: fidelisfelipe <atosfiel@gmail.com>
+Date:   Wed Jun 22 11:03:47 2016 -0300
+
+    update package.js for use prod
+
+[33mcommit 53707d214ef4342808562669acb8d721bb9ef32f[m
+Author: fidelisfelipe <atosfiel@gmail.com>
+Date:   Wed Jun 22 10:58:54 2016 -0300
+
+    update package.js for use prod
+
+[33mcommit be96948d3360a42c3c765ec2ddb58fd76702350d[m
+Author: fidelisfelipe <atosfiel@gmail.com>
+Date:   Wed Jun 22 10:38:45 2016 -0300
+
+    update environments end package.js for use prod
+
+[33mcommit a461385f6a1bb1753a297d5bd1e9bf8e5b212b81[m
+Author: fidelisfelipe <atosfiel@gmail.com>
+Date:   Tue Jun 21 18:41:29 2016 -0300
+
+    update package.json
+
+[33mcommit 330698d929798a96b4eae53d36f24f6663744622[m
+Author: fidelisfelipe <atosfiel@gmail.com>
+Date:   Tue Jun 21 18:38:46 2016 -0300
+
+    update package.json
+
+[33mcommit 5b5c10b06e1fbc9c2403aa00db4e7bf9b699b4e0[m
+Author: fidelisfelipe <atosfiel@gmail.com>
+Date:   Tue Jun 21 18:36:17 2016 -0300
+
+    update package.json
+
+[33mcommit 23f835428c4b62df3f9c8d6efdcbcd02a9d167ce[m
+Author: fidelisfelipe <atosfiel@gmail.com>
+Date:   Tue Jun 21 18:34:25 2016 -0300
+
+    update package.json
+
+[33mcommit f9d41db37f6fd5dfc86e8d390712eee19d411497[m
+Author: fidelisfelipe <atosfiel@gmail.com>
+Date:   Tue Jun 21 18:32:35 2016 -0300
+
+    update package.json
+
+[33mcommit 8172d58e9ddbf62cde2636499558fd79b9988b7e[m
+Author: fidelisfelipe <atosfiel@gmail.com>
+Date:   Tue Jun 21 18:31:00 2016 -0300
+
+    update package.json
+
+[33mcommit 0d177d267d9070f9386d1481eac56bde063863a0[m
+Author: fidelisfelipe <atosfiel@gmail.com>
+Date:   Tue Jun 21 18:29:07 2016 -0300
+
+    update package.json
+
+[33mcommit a3f721c52a3c16aaea72428a7084657eff5ae363[m
+Author: fidelisfelipe <atosfiel@gmail.com>
+Date:   Tue Jun 21 18:26:28 2016 -0300
+
+    update package.json
+
+[33mcommit ecf7252d3fe5791afec86285e2d8c7fb9a4d2410[m
+Author: fidelisfelipe <atosfiel@gmail.com>
+Date:   Tue Jun 21 18:24:56 2016 -0300
+
+    update package.json
+
+[33mcommit 0da5d5979cc5f3bcb71cd96aa29d536249cccb40[m
+Author: fidelisfelipe <atosfiel@gmail.com>
+Date:   Tue Jun 21 18:23:06 2016 -0300
+
+    update package.json
+
+[33mcommit 7f5ed8eed9c0e429cb279a07d8b7494ff3c82a7c[m
+Author: fidelisfelipe <atosfiel@gmail.com>
+Date:   Tue Jun 21 18:17:35 2016 -0300
+
+    update package.json
+
+[33mcommit 4e11326869dc541ee91d37bb7e99610e7acb8412[m
+Author: fidelisfelipe <atosfiel@gmail.com>
+Date:   Tue Jun 21 18:16:07 2016 -0300
+
+    update package.json
+
+[33mcommit 28311c622d3c2efabe85e7472d97a199184bb582[m
+Author: fidelisfelipe <atosfiel@gmail.com>
+Date:   Tue Jun 21 18:15:02 2016 -0300
+
+    update package.json
+
+[33mcommit b704d21525278d7c54dd3990cf20ff0e2297c323[m
+Author: fidelisfelipe <atosfiel@gmail.com>
+Date:   Tue Jun 21 18:14:08 2016 -0300
+
+    update package.json
+
+[33mcommit 19595dcd1ba2df534a5e62b69b1d624c00faf70b[m
+Author: fidelisfelipe <atosfiel@gmail.com>
+Date:   Tue Jun 21 18:13:13 2016 -0300
+
+    update package.json
+
+[33mcommit ce4df464a6a3373fee2589117108c092c2fba62a[m
+Author: fidelisfelipe <atosfiel@gmail.com>
+Date:   Tue Jun 21 18:12:10 2016 -0300
+
+    update package.json
+
+[33mcommit 3a8ec50fcdb2210c2bb47fadcd0a066e26f2c6e2[m
+Author: fidelisfelipe <atosfiel@gmail.com>
+Date:   Tue Jun 21 18:10:42 2016 -0300
+
+    update package.json
+
+[33mcommit 36857defcc8a728ca3d60e0e4b2653faeb0a65cd[m
+Author: fidelisfelipe <atosfiel@gmail.com>
+Date:   Tue Jun 21 18:09:23 2016 -0300
+
+    update package.json
+
+[33mcommit 7773b4923239e90fb30dde99ed85fd73d766d0a1[m
+Author: fidelisfelipe <atosfiel@gmail.com>
+Date:   Tue Jun 21 18:06:52 2016 -0300
+
+    update package.json
+
+[33mcommit 2247c67bad4372e2b8e564bc095cce94a0e5afde[m
+Author: fidelisfelipe <atosfiel@gmail.com>
+Date:   Tue Jun 21 18:00:21 2016 -0300
+
+    init pr

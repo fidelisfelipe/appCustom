@@ -6,6 +6,8 @@ angular.module('authSocialBackand')
   vm.data = {};
 //go states
   vm.signUpGo = signUpGo;
+  vm.signInGo = signInGo;
+  vm.homeGo = homeGo;
   vm.updateAccountGo = updateAccountGo;
   vm.updatePasswordGo = passwordUpdateGo;
 
@@ -28,7 +30,7 @@ angular.module('authSocialBackand')
 
   function signinSocial (provider) {
     FlashService.Loading(true);
-    AuthSocialBackandService.signinSocial(provider, loginGo);
+    AuthSocialBackandService.signinSocial(provider, homeGo);
     FlashService.Loading(false);
   }
 
@@ -42,7 +44,7 @@ angular.module('authSocialBackand')
   function signin () {
     if (vm.email && vm.password) {
       FlashService.Loading(true);
-      AuthSocialBackandService.signin(vm.email, vm.password, loginGo);
+      AuthSocialBackandService.signin(vm.email, vm.password, homeGo);
       FlashService.Loading(false);
     } else {
       $log.log('not sended info for login...');
@@ -75,13 +77,19 @@ angular.module('authSocialBackand')
   function signUpGo () {
     $state.go('authSocialBackandSignUp');
   }
+  function signInGo () {
+    $state.go('authSocialBackandLogin');
+  }
 
   function passwordUpdateGo () {
     vm.isUpdatePassword = true;
     $state.go('main.account');
   }
-  function loginGo () {
+  function homeGo () {
     $state.go('main.home');//authSocialBackandLogin
+  }
+  function loginGo () {
+    $state.go('authSocialBackandLogin');
   }
 
 });

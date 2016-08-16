@@ -6,8 +6,7 @@
 	  <div class="col col-center"><h3>Register</h3></div>
 	  <div class="col col-bottom"></div>
 	</div>
-	<div class="row row-center">
-	  <div class="col col-center">
+
 			<form ng-submit="vm.signUp()" >
 				<div class="list">
 					<div class="row">
@@ -51,17 +50,12 @@
 						</div>
 					</div>
 					<h4 style="color:red;" ng-bind="vm.errorMessage"></h4>
-					<div class="row row-bottom">
-						<div class="col col-center">
-							<button class="button button-full button-calm" type="submit">
-								Register
-							</button>
-						</div>
-					</div>
+					<button class="button button-full button-calm" type="submit">
+						Register
+					</button>
 				</div>
 			</form>
-	  </div>
-	</div>
+
 	
   </ion-content>
 </ion-view>

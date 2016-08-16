@@ -1,6 +1,6 @@
 <ion-view view-title="IFly">
   <!-- do you want padding? -->
-  <ion-content class="padding"  >
+  <ion-content >
     <!-- where login on -->
 	<div ng-show="vm.currentUser.isAuthorized">
    		<div class="button-bar" ng-show="vm.currentUser.isAuthorized">
@@ -67,27 +67,25 @@
 	  </div>
 	</div>
 	
-	<div class="row row-bottom">
-	  <div class="col">
+
 	  	<button class="button button-full button-positive" type="submit">
 			Login
 		</button>
-		<a class="button button-full button-calm" ng-click="vm.signUpGo()">
-			Register
-		</a>
-	  </div>
-	</div>
+		
+
 </form>
 	
 <!-- where login off - social sign in -->
-<div class="button-bar" ng-hide="vm.currentUser.isAuthorized">
-	<button class="button button-positive icon-left ion-social-facebook" ng-click="vm.signinSocial('facebook')" type="button">
+
+	<button ng-hide="vm.currentUser.isAuthorized" class="button button-full button-positive icon-left ion-social-facebook" ng-click="vm.signinSocial('facebook')" type="button">
 		Facebook
 	</button>
-	<button class="button button-assertive icon-left ion-social-googleplus" ng-click="vm.signinSocial('google')" type="button">
+	<button ng-hide="vm.currentUser.isAuthorized" class="button button-full button-assertive icon-left ion-social-googleplus" ng-click="vm.signinSocial('google')" type="button">
 		Google+
 	</button>
-</div>
-	
+
+<a class="button button-full button-calm" ng-click="vm.signUpGo()">
+			New be? Register
+		</a>
   </ion-content>
 </ion-view>
