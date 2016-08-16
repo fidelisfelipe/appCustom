@@ -10,7 +10,7 @@ angular.module('authSocialBackand', [
 .config(function ($stateProvider, $urlRouterProvider, $httpProvider, BackandProvider) {
 
   BackandProvider.setAppName('ifly');
-  BackandProvider.setSignUpToken('f68982d7acaffd2ad70656e79ef76af4');
+  BackandProvider.setSignUpToken('1902749c-e19e-4044-90db-ce2e84832ca6');
 
   $httpProvider.interceptors.push('APIInterceptor');
 

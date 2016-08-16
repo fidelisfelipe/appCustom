@@ -73,7 +73,7 @@ angular.module('authSocialBackand')
   }
 
   function signUpGo () {
-    $state.go('main.account');
+    $state.go('authSocialBackandSignUp');
   }
 
   function passwordUpdateGo () {
@@ -81,7 +81,7 @@ angular.module('authSocialBackand')
     $state.go('main.account');
   }
   function loginGo () {
-    $state.go('main.account');//authSocialBackandLogin
+    $state.go('main.home');//authSocialBackandLogin
   }
 
 });

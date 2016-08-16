@@ -32,17 +32,16 @@
     <!-- menu content -->
     <ion-content>
 	   <ion-list ng-show="vm.currentUser.isAuthorized">
-	        <ion-item menu-close ui-sref="main.account">
 	       	  <div class="item item-avatar">
 			    <img ng-src="main/assets/images/profile.jpg" />
 			    <h2>{{vm.currentUser.firstName}} {{vm.currentUser.lastName}}</h2>
 			    <p>{{vm.currentUser.username}}</p>
 			  </div>
-	        </ion-item>
+
 	   </ion-list>
       <ion-list>
         <ion-item menu-close ui-sref="main.home" ng-show="vm.currentUser.isAuthorized">
-          Home
+          Home 
         </ion-item>
         <ion-item menu-close ui-sref="main.account" ng-show="!vm.currentUser.isAuthorized">
           Login
@@ -53,12 +52,12 @@
         <ion-item menu-close ui-sref="main.ranking" ng-show="vm.currentUser.isAuthorized">
           Ranking
         </ion-item>
-        <ion-item menu-close ui-sref="main.debug" ng-show="vm.currentUser.isAuthorized">
-          Debug
-        </ion-item>
         <ion-item menu-close ui-sref="main.about" >
           About
         </ion-item>	
+        <ion-item menu-close ui-sref="main.debug" ng-show="vm.currentUser.isAuthorized">
+          Debug
+        </ion-item>
       </ion-list>
     </ion-content>
 
