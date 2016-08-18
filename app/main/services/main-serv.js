@@ -30,6 +30,20 @@ angular.module('main')
       .then($timeout(function () {
       }.bind(this), 6000));
   };
+  this.menus = function (callback, fail) {
+    //$http.get(Config.ENV.DOMAIN_BACKEND_URL + '/menus')
+    $http.get('data/main/menus.json')
+    .then(function (response) {
+      if (response.status === 200) {
+        $log.log('get menus dinamic - main...');
+        callback(response.data);
+      } else {
+        fail();
+      }
+    }.bind(this))
+      .then($timeout(function () {
+      }.bind(this), 2000));
+  };
 
   this.backendOnline = function () {
     $log.log('backendOnline testing...');

@@ -1,4 +1,5 @@
 'use strict';
+var $stateProviderRef = null;
 angular.module('authSocialBackand', [
   'ngCookies',
   'ngMessages',
@@ -16,8 +17,15 @@ angular.module('authSocialBackand', [
 
   $urlRouterProvider.otherwise('/auth/social/backand/login');
   // ROUTING with ui.router
+  $stateProviderRef = $stateProvider;
   $stateProvider
     // this state is placed in the <ion-nav-view> in the index.html
+    .state('authSocialBackandHome', {
+      url: '/auth/social/backand/home',
+      templateUrl: 'auth-social-backand/templates/home.view.html',
+      cache: false,
+      controller: 'AuthSocialBackandCtrl as vm'
+    })
     .state('authSocialBackandLogin', {
       url: '/auth/social/backand/login',
       templateUrl: 'auth-social-backand/templates/login.view.html',
@@ -61,6 +69,26 @@ angular.module('authSocialBackand', [
     Backand.setIsMobile(isMobile);
     Backand.setRunSignupAfterErrorInSigninSocial(true);
   });
+
+  $rootScope.menus = AuthSocialBackandService.menus(function setMenus (menus) {$log.log('response menus auth: ', menus);});
+//set state dinamic
+  angular.forEach($rootScope.menus, function (value, key) {
+    $log.log('Menu.name: ', value.name);
+    var state = {
+      'url': value.url,
+      'views': {}
+    };
+
+    angular.forEach(value.views, function (view) 
+    {
+      state.views[view.name] = {
+        templateUrl : view.templateUrl,
+        controller : view.controller,
+      };
+    });
+    $stateProviderRef.state(value.name, state);
+  });
+//set state dinamic
 
   $rootScope.$on('$stateChangeSuccess', AuthSocialBackandService.onChangeSuccess);
 

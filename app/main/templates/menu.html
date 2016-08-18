@@ -31,42 +31,26 @@
 
     <!-- menu header -->
     <ion-header-bar class="bar-positive">
-      <h1 class="title">IFly</h1>
+      <h1 class="title">{{title}}</h1>
     </ion-header-bar>
 
     <!-- menu content -->
     <ion-content>
 	   <ion-list ng-show="vm.currentUser.isAuthorized">
 	       	  <div class="item item-avatar">
-			    <img ng-src="main/assets/images/profile.jpg" />
+			    <img ng-src="{{vm.currentUser.srcImg}}" /> 
 			    <h2>{{vm.currentUser.firstName}} {{vm.currentUser.lastName}}</h2>
 			    <p>
 				
-				{{vm.currentUser.username}}
-
+				{{vm.currentUser.username}} <br>{{vm.currentUser.isAdmin ? 'Hi Dev :)' : ''}}
 				</p>
 			</button>
 			  </div>
 
 	   </ion-list>
       <ion-list>
-        <ion-item menu-close ui-sref="main.home" ng-show="vm.currentUser.isAuthorized">
-          Home 
-        </ion-item>
-        <ion-item menu-close ui-sref="main.account" ng-show="!vm.currentUser.isAuthorized">
-          Login
-        </ion-item>
-        <ion-item menu-close ui-sref="main.account" ng-show="vm.currentUser.isAuthorized">
-          Account
-        </ion-item>
-        <ion-item menu-close ui-sref="main.ranking" ng-show="vm.currentUser.isAuthorized">
-          Ranking
-        </ion-item>
-        <ion-item menu-close ui-sref="main.about" >
-          About
-        </ion-item>	
-        <ion-item menu-close ui-sref="main.debug" ng-show="vm.currentUser.isAuthorized">
-          Debug
+        <ion-item ng-repeat="menu in menus" menu-close ui-sref="{{menu.name}}" ng-show="{{menu.show}}">
+          {{menu.title}}
         </ion-item>
       </ion-list>
     </ion-content>

@@ -1,5 +1,5 @@
 'use strict';
-angular.module('frontendIonic', [
+angular.module('entregas', [
   // load your modules here
   'main', // starting with the main module
   'authSocialBackand',

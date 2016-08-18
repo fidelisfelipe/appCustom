@@ -27,17 +27,31 @@ angular.module('authSocialBackand')
     $log.debug('vm.currentUser:', vm.currentUser);
     $log.debug('vm.updatePwd:', vm.updatePwd);
   })();
-
+  function homeGo () {
+    $log.log('redirect...');
+    $state.go('authSocialBackandHome');
+  }
   function signinSocial (provider) {
     FlashService.Loading(true);
-    AuthSocialBackandService.signinSocial(provider, homeGo);
+    $log.log('check connection...');
+    if (true) {
+      $log.log('sigin by pass: connect off... ');
+    }
+    $log.log('open plugin connection...');
+    //verify localStorage flag off line use
+    var flagOnline = false;
+    if (!flagOnline)
+    FlashService.Question('Ignition Internet Now?', function () {
+        AuthSocialBackandService.signinSocial(provider, authGo);
+    });
+
     FlashService.Loading(false);
   }
 
   function signout () {
     FlashService.Question('Close Application Now?', function () {
       AuthSocialBackandService.signout();
-      $state.go('authSocialBackandLogin');//authSocialBackandLogin
+      $state.go('authSocialBackandLogin');
     });
   }
 
@@ -71,7 +85,8 @@ angular.module('authSocialBackand')
 
   function updateAccountGo () {
     vm.isUpdateAccount = true;
-    $state.go('main.account');
+    $state.go('authSocialBackandLogin');
+    $log.log('update account with login');
   }
 
   function signUpGo () {
@@ -85,8 +100,8 @@ angular.module('authSocialBackand')
     vm.isUpdatePassword = true;
     $state.go('main.account');
   }
-  function homeGo () {
-    $state.go('main.home');//authSocialBackandLogin
+  function authGo () {
+    $state.go('auth.home');//authSocialBackandLogin
   }
   function loginGo () {
     $state.go('authSocialBackandLogin');

@@ -8,6 +8,7 @@ angular.module('authSocialBackand')
     this.lastName = '';
     this.role = '';
     this.isAuthorized = false;
+    this.isAdmin = false;
   };
   var Utils = {
 /**
@@ -75,6 +76,8 @@ angular.module('authSocialBackand')
       user.firstName = data.firstName;
       user.lastName = data.lastName;
       user.role = data.role;
+      user.isAdmin = (user.role === 'Admin');
+      user.srcImg = 'main/assets/images/profile.jpg';
       $log.debug('set user ', user);
       sessionStorage.currentUser = user;
     },
@@ -90,7 +93,9 @@ angular.module('authSocialBackand')
       user.firstName = '';
       user.lastName = '';
       user.role = '';
+      user.isAdmin = false;
       user.isAuthorized = false;
+      user.srcImg = '';
       $log.debug('set user blank ', user);
       sessionStorage.removeItem('currentUser');
     },

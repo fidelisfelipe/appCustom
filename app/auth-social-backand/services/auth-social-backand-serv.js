@@ -1,12 +1,13 @@
 'use strict';
 angular.module('authSocialBackand')
-.service('AuthSocialBackandService', function ($log, $state, $http, Utils, FlashService, Backand) {
+.service('AuthSocialBackandService', function ($log, $state, $http, $timeout, Utils, Config, FlashService, Backand) {
   $log.log('Hello from your Service: AuthSocialBackandService in module authSocialBackand');
   var service = this;
   service.signin = signin;
   service.signinSocial = signinSocial;
   service.signup = signup;
   service.signout = signout;
+  service.menus = menus;
 
   service.unauthorized = unauthorized;
   service.onAuthorized = onAuthorized;
@@ -16,7 +17,19 @@ angular.module('authSocialBackand')
 
   service.getUserCurrent = function () {return Utils.getUserCurrent();};
   service.refreshData = function () {return Utils.refreshUserCurrentForData();};
-
+  function menus(callback, fail) {
+    $http.get('data/auth-social-backand/menus.json')
+    .then(function (response) {
+      if (response.status === 200) {
+        $log.log('get menus dinamic - auth...');
+        callback(response.data);
+      } else {
+        fail();
+      }
+    }.bind(this))
+      .then($timeout(function () {
+      }.bind(this), 2000));
+  };
   //socialSignIn
   function signinSocial (provider, callback) {
     return Backand.socialSignIn(provider).then(function (response) {
