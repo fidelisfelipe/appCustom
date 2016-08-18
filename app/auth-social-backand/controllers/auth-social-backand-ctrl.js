@@ -34,7 +34,7 @@ angular.module('authSocialBackand')
   function signinSocial (provider) {
     FlashService.Loading(true);
     $log.log('check connection...');
-    var flagOnline = false;//get status connection for ionic platform
+    var flagOnline = true;//get status connection for ionic platform
     if (!flagOnline) {
       $log.log('sigin by pass: connect off... ');
     } else {
