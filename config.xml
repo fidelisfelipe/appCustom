@@ -22,12 +22,4 @@
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
     </platform>
-    <engine name="android" spec="~5.1.1" />
-    <plugin name="cordova-plugin-whitelist" spec="1" />
-    <plugin name="cordova-plugin-device" spec="~1.1.2" />
-    <plugin name="cordova-plugin-inappbrowser" spec="~1.4.0" />
-    <plugin name="com.phonegap.plugins.facebookconnect" version="<VERSION>">
-        <param name="APP_ID" value="9a9e5b7f31b086ca3336f4a3e0da5644" />
-        <param name="APP_NAME" value="appcustom" />
-    </plugin>
 </widget>
