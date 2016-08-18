@@ -17,7 +17,7 @@ angular.module('authSocialBackand')
 
   service.getUserCurrent = function () {return Utils.getUserCurrent();};
   service.refreshData = function () {return Utils.refreshUserCurrentForData();};
-  function menus(callback, fail) {
+  function menus (callback, fail) {
     $http.get('data/auth-social-backand/menus.json')
     .then(function (response) {
       if (response.status === 200) {
@@ -29,7 +29,7 @@ angular.module('authSocialBackand')
     }.bind(this))
       .then($timeout(function () {
       }.bind(this), 2000));
-  };
+  }
   //socialSignIn
   function signinSocial (provider, callback) {
     return Backand.socialSignIn(provider).then(function (response) {

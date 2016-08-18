@@ -25,18 +25,18 @@ angular.module('main', [
 //get menu dinamic
   $rootScope.menus = Main.menus(function setMenus (menus) {$log.log('response menus main: ', menus);});
 //set state dinamic
-  angular.forEach($rootScope.menus, function (value, key) {
+  angular.forEach($rootScope.menus, function (value) {
     $log.log('Menu.name: ', value.name);
     var state = {
       'url': value.url,
       'views': {}
     };
 
-    angular.forEach(value.views, function (view) 
+    angular.forEach(value.views, function (view)
     {
       state.views[view.name] = {
-        templateUrl : view.templateUrl,
-        controller : view.controller,
+        templateUrl: view.templateUrl,
+        controller: view.controller,
       };
     });
     $stateProviderRef.state(value.name, state);

@@ -34,16 +34,16 @@ angular.module('authSocialBackand')
   function signinSocial (provider) {
     FlashService.Loading(true);
     $log.log('check connection...');
-    if (true) {
+    var flagOnline = false;//get status connection for ionic platform
+    if (!flagOnline) {
       $log.log('sigin by pass: connect off... ');
-    }
-    $log.log('open plugin connection...');
+    } else {
+      $log.log('open plugin connection...');
     //verify localStorage flag off line use
-    var flagOnline = false;
-    if (!flagOnline)
-    FlashService.Question('Ignition Internet Now?', function () {
+      FlashService.Question('Ignition Internet Now?', function () {
         AuthSocialBackandService.signinSocial(provider, authGo);
-    });
+      });
+    }
 
     FlashService.Loading(false);
   }
