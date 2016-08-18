@@ -1,5 +1,5 @@
 'use strict';
-angular.module('entregas', [
+angular.module('app', [
   // load your modules here
   'main', // starting with the main module
   'authSocialBackand',
