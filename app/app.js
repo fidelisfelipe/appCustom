@@ -1,6 +1,7 @@
 'use strict';
 angular.module('app', [
   // load your modules here
-  'main', // starting with the main module
+// starting with the main module
+  'main',
   'authSocialBackand',
 ]);

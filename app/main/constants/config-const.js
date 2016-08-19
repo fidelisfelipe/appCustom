@@ -1,3 +1,4 @@
+
 'use strict';
 angular.module('main')
 .constant('Config', {
@@ -18,3 +19,4 @@ angular.module('main')
   }
 
 });
+

@@ -17,7 +17,6 @@ angular.module('authSocialBackand')
 //onValidUpdateAccount
     onValidUpdateAccount: function (response) {
       if (response.status === 200) {
-        $log.log('success update password! ', response);
         //sincronize data for user with model
         Utils.refreshUserCurrentForData();
         //set authorized post logon
@@ -26,18 +25,15 @@ angular.module('authSocialBackand')
         Utils.refreshUserCurrentRoot();
         FlashService.Success('Change account successfull...');
       } else {
-        $log.log('success update password! ', response);
         FlashService.Error(response.data);
       }
     },
 //onErrorUpdateAccount
     onErrorUpdateAccount: function (response) {
-      $log.log('error update account: ', response);
       FlashService.Error(response.data);
     },
 //onValidSignup
     onValidSignup: function (response, callback) {
-      $log.log('success signup:', response);
       FlashService.Success('Sign Up Successfull!');
       callback();
     },
@@ -57,13 +53,11 @@ angular.module('authSocialBackand')
     },
 //onValidUpdatePassword
     onValidUpdatePassword: function (data, logout) {
-      $log.log('success update password! ', data);
       FlashService.Success('Change password successfull...');
       logout();
     },
 //onErrorUpdatePassword
     onErrorUpdatePassword: function (data) {
-      $log.log('error update password: ', data);
       FlashService.Error(data.data);
     },
 /**
@@ -78,7 +72,6 @@ angular.module('authSocialBackand')
       user.role = data.role;
       user.isAdmin = (user.role === 'Admin');
       user.srcImg = 'main/assets/images/profile.jpg';
-      $log.debug('set user ', user);
       sessionStorage.currentUser = user;
     },
 //setUserForDataDomain
@@ -96,31 +89,26 @@ angular.module('authSocialBackand')
       user.isAdmin = false;
       user.isAuthorized = false;
       user.srcImg = '';
-      $log.debug('set user blank ', user);
       sessionStorage.removeItem('currentUser');
     },
 //setIsAuthorized
     setIsAuthorized: function () {
       user.isAuthorized = true;
-      $log.debug('isAuthorized...', user.isAuthorized);
     },
 //setNotAuthorized
     setNotAuthorized: function () {
       user.isAuthorized = false;
-      $log.debug('notAuthorized...', user.isAuthorized);
     },
 //isAutorized
     isAuthorized: function () {
-      $log.debug('check isAutorized...', user.isAuthorized);
+
       return user.isAuthorized;
     },
 //getUserCurrent
     getUserCurrent: function () {
-      $log.debug('get currentUser...', JSON.parse(sessionStorage.getItem('currentUser')));
       if (JSON.parse(sessionStorage.getItem('currentUser')) !== null) {
         user =  JSON.parse(sessionStorage.getItem('currentUser'));
       }
-      $log.log('User:', user);
       return user;
     },
 //refreshUserCurrentRoot
@@ -130,16 +118,14 @@ angular.module('authSocialBackand')
 //refreshUserCurrentForData
     refreshUserCurrentForData: function () {
 
-      $log.debug('refresh user current for data...');
       $http({
         method: 'GET',
         url: Backand.getApiUrl() + '/1/objects/users/' + user.userId + '?exclude=items%2C%20__metadata'
       }).then(function (response) {
-        $log.debug('return user data success!');
         Utils.setUserForDataDomain(response.data);
         Utils.refreshUserCurrentRoot();
       }, function (error) {
-        $log.debug('error of update use for data!', error);
+        $log.debug('fail update: ', error);
       });
 
     }

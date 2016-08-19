@@ -1,67 +1,17 @@
-<ion-view view-title="IFly">
+<ion-view view-title="{{title}}">
   <!-- do you want padding? -->
   <ion-content >
-    <!-- where login on -->
-	<div ng-show="vm.currentUser.isAuthorized">
-   		<div class="button-bar" ng-show="vm.currentUser.isAuthorized">
-			<button class="button button-block button-assertive ion-power" ng-click="vm.signout()" type="button" ng-show="vm.currentUser.isAuthorized">
-			</button>
-		</div>
-		<div class="list">
-		<a class="item item-thumbnail-left" href="#">
-	      <img ng-src="auth-social-backand/assets/images/yo@2x.png">
-	      <h2>{{vm.currentUser.firstName}} {{vm.currentUser.lastName}}
-	      <br>
-	      {{vm.currentUser.username}}
-		  </h2> 
-	    </a>
-	    <a class="item item-thumbnail-left button-block" href="#"
-		      ng-click="vm.showUpdate = !vm.showUpdate" ng-class="{'button button-stable': !vm.showUpdate, 'button button-positive': vm.showUpdate}" >
-			   <i class="icon ion-person"></i>
-		  </a>
-		</div>
-	</div>
-	<!-- login on - update data -->
-	<div class="list" ng-show="vm.currentUser.isAuthorized && vm.showUpdate">
-        <div class="button-bar" >
-			<button class="button button-block button-positive ion-gear-a" ng-click="vm.updatePwd = !vm.updatePwd;" ng-class="{'button button-block button-stable': vm.updatePwd, 'button button-block button-positive': !vm.updatePwd}">
-			</button>
-			<button class="button button-block button-stable ion-ios-locked" ng-click="vm.updatePwd = !vm.updatePwd;" ng-class="{'button button-block button-stable': !vm.updatePwd, 'button button-block button-positive': vm.updatePwd}">
-			</button>
-		</div>
-		<div class="list" ng-hide="vm.updatePwd">
-			<label class="item item-input">
-				First Name:&nbsp;<input id="firstName" name="firstName" type="text" placeholder="First Name" ng-model="vm.currentUser.firstName" >
-			</label>
-			<label class="item item-input">
-				Last Name:&nbsp;<input id="lastName" name="lastName" type="text" placeholder="Last Name" ng-model="vm.currentUser.lastName" >
-			</label>
-		</div>
-		<div class="list" ng-show="vm.updatePwd">
-			<label class="item item-input">
-				Current Pwd:&nbsp;<input id="password" name="passwordCurrent" type="password" placeholder="Password Current" ng-model="vm.currentUser.passwordCurrent">
-			</label>
-			<label class="item item-input">
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;New Pwd:&nbsp;<input id="password" name="passwordNew" type="password" placeholder="Password New" ng-model="vm.currentUser.passwordNew">
-			</label>
-		</div>
-		<div class="button-bar" >
-			<button class="button button-block button-positive" ng-click="vm.updateAccount()">
-				Save Data Base
-			</button>
-		</div>
-	</div>
 	<!-- where login off -->
-<form ng-submit="vm.signin()" ng-hide="vm.currentUser.isAuthorized">
+<form ng-submit="ctrl.signIn()" ng-hide="ctrl.currentUser.isAuthorized">
 	<h3 style="text-align: center">Login</h3>
 	<div class="row row-center">
 	  <div class="col col-center">
 			  <div class="list">
 				<label class="item item-input">
-					<input id="email" name="email" type="email" placeholder="E-mail" ng-model="vm.email">
+					<input id="email" name="email" type="email" placeholder="E-mail" ng-model="ctrl.email">
 				</label>
 				<label class="item item-input">
-					<input id="password" name="password" type="password" placeholder="Password" ng-model="vm.password">
+					<input id="password" name="password" type="password" placeholder="Password" ng-model="ctrl.password">
 				</label>
 			  </div>	
 	  </div>
@@ -77,14 +27,14 @@
 	
 <!-- where login off - social sign in -->
 
-	<button ng-hide="vm.currentUser.isAuthorized" class="button button-full button-positive icon-left ion-social-facebook" ng-click="vm.signinSocial('facebook')" type="button">
+	<button ng-hide="ctrl.currentUser.isAuthorized" class="button button-full button-positive icon-left ion-social-facebook" ng-click="ctrl.signinSocial('facebook')" type="button">
 		Facebook
 	</button>
-	<button ng-hide="vm.currentUser.isAuthorized" class="button button-full button-assertive icon-left ion-social-googleplus" ng-click="vm.signinSocial('google')" type="button">
+	<button ng-hide="ctrl.currentUser.isAuthorized" class="button button-full button-assertive icon-left ion-social-googleplus" ng-click="ctrl.signinSocial('google')" type="button">
 		Google+
 	</button>
 
-<a class="button button-full button-calm" ng-click="vm.signUpGo()">
+		<a class="button button-full button-calm" ng-click="ctrl.signUpGo()" ng-hide="ctrl.currentUser.isAuthorized" >
 			New be? Register
 		</a>
   </ion-content>

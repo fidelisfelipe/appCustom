@@ -21,7 +21,6 @@ angular.module('authSocialBackand')
     $http.get('data/auth-social-backand/menus.json')
     .then(function (response) {
       if (response.status === 200) {
-        $log.log('get menus dinamic - auth...');
         callback(response.data);
       } else {
         fail();
@@ -32,8 +31,7 @@ angular.module('authSocialBackand')
   }
   //socialSignIn
   function signinSocial (provider, callback) {
-    return Backand.socialSignIn(provider).then(function (response) {
-      $log.log('signinSocial:', response);
+    return Backand.socialSignIn(provider).then(function () {
       onAuthorized(callback);
     }, function (response) {
       FlashService.Error(response.data && response.data.error_description || 'Fail on Login, retriver step...');
@@ -41,10 +39,10 @@ angular.module('authSocialBackand')
     });
   }
   //signout
-  function signout () {
+  function signout (callback) {
     $log.log('signout...');
     Utils.setUserCurrentBlank();
-    $state.go('authSocialBackandLogin');
+    callback();
     return Backand.signout();
   }
   //unauthorized
@@ -79,9 +77,8 @@ angular.module('authSocialBackand')
   }
   //onAuthorized
   function onAuthorized (callback) {
-    $log.log('onAuthorized...');
+    $log.log('authorized...');
     Backand.getUserDetails().then(function (data) {
-      $log.log('data' + JSON.stringify(data));
       if (data && data.username !== undefined && data.regId) {
         //init user blank
         Utils.setUserCurrentBlank();
@@ -93,7 +90,6 @@ angular.module('authSocialBackand')
         Utils.setIsAuthorized();
         //sincronize var user with root user
         Utils.refreshUserCurrentRoot();
-        FlashService.Success('Welcome');
         callback();
       } else {
         $log.log('undefined user current...');
@@ -102,14 +98,12 @@ angular.module('authSocialBackand')
   }
   //onChangeSuccess
   function onChangeSuccess (event, toState) {
-    $log.log('stateChangeSuccess...');
+    $log.log('state change...');
     if (toState.name === 'authSocialBackandLogin' && !Utils.isAuthorized) {
       service.signout();
-      $state.go('authSocialBackandLogin');
     }
     else if (toState.name !== 'authSocialBackandLogin' && !Utils.isAuthorized && Backand.getToken() === undefined) {
       service.unauthorized();
-      $state.go('authSocialBackandLogin');
     }
     else if (Backand.getToken() !== undefined && Backand.getToken() !== null && Backand.getToken().toString().length > -1) {
       $log.debug('token valid...');

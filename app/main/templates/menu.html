@@ -15,7 +15,7 @@
         </button>
       </ion-nav-buttons>
 	  <ion-nav-buttons side="right" >
-	    <button class="button button-icon button-clear ion-power" ng-click="vm.signout()" ng-show="vm.currentUser.isAuthorized">
+	    <button class="button button-icon button-clear ion-power" ng-click="ctrl.signOut()" ng-show="ctrl.currentUser.isAuthorized">
 		</button>
 	  </ion-nav-buttons>
 
@@ -36,20 +36,20 @@
 
     <!-- menu content -->
     <ion-content>
-	   <ion-list ng-show="vm.currentUser.isAuthorized">
+	   <ion-list ng-show="ctrl.currentUser.isAuthorized">
 	       	  <div class="item item-avatar">
-			    <img ng-src="{{vm.currentUser.srcImg}}" /> 
-			    <h2>{{vm.currentUser.firstName}} {{vm.currentUser.lastName}}</h2>
+			    <img ng-src="{{ctrl.currentUser.srcImg}}" /> 
+			    <h2>{{ctrl.currentUser.firstName}} {{ctrl.currentUser.lastName}}</h2>
 			    <p>
 				
-				{{vm.currentUser.username}} <br>{{vm.currentUser.isAdmin ? 'Hi Dev :)' : ''}}
+				{{ctrl.currentUser.username}} <br>{{ctrl.currentUser.isAdmin ? 'Hi Dev :)' : ''}}
 				</p>
 			</button>
 			  </div>
 
 	   </ion-list>
-      <ion-list>
-        <ion-item ng-repeat="menu in menus" menu-close ui-sref="{{menu.name}}" ng-show="{{menu.show}}">
+      <ion-list >
+        <ion-item ng-repeat="menu in menus" menu-close ui-sref="{{menu.name}}" >
           {{menu.title}}
         </ion-item>
       </ion-list>

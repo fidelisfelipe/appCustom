@@ -2,14 +2,14 @@
     "id": 1, "title": "Home", "name": "main.home",  "show": "vm.currentUser.isAuthorized", "url": "/home", "views": [{"name": "pageContent", "templateUrl": "main/templates/home.html", "controller": "HomeCtrl as vm"}]
   },
   {
-    "id": 2, "title": "Account", "name": "main.account",  "show": "vm.currentUser.isAuthorized", "url": "/account", "views": [{"name": "pageContent", "templateUrl": "main/templates/account.html", "controller": "AuthSocialBackandCtrl as vm"}]
-  },
-  {
-    "id": 3, "title": "Ranking", "name": "main.ranking", "show": "vm.currentUser.isAuthorized", "url": "/ranking", "views": [{"name": "pageContent", "templateUrl": "main/templates/ranking.html", "controller": "AuthSocialBackandCtrl as vm"}]
+    "id": 2, "title": "Account", "name": "main.account",  "show": "vm.currentUser.isAuthorized", "url": "/account", "views": [{"name": "pageContent", "templateUrl": "main/templates/account.html", "controller": "AccountCtrl as vm"}]
   },
   {
     "id": 4, "title": "About", "name": "main.about", "show": "vm.currentUser.isAuthorized", "url": "/about", "views": [{"name": "pageContent", "templateUrl": "main/templates/about.html", "controller": "AuthSocialBackandCtrl as vm"}]
   },
   {
-    "id": 5, "title": "Debug", "name": "main.debug",  "show": "vm.currentUser.isAdmin", "url": "/debug", "views": [{"name": "pageContent", "templateUrl": "main/templates/debug.html", "controller": "DebugCtrl as vm"}]
+    "id": 5, "title": "Link", "name": "main.link",  "show": "vm.currentUser.isAuthorized", "url": "/link", "views": [{"name": "pageContent", "templateUrl": "main/templates/link.html", "controller": "LinkCtrl as vm"}]
+  },
+  {
+    "id": 6, "title": "Debug", "name": "main.debug",  "show": "vm.currentUser.isAdmin", "url": "/debug", "views": [{"name": "pageContent", "templateUrl": "main/templates/debug.html", "controller": "DebugCtrl as vm"}]
   }]

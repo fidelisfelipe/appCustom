@@ -10,12 +10,9 @@
       <ion-nav-back-button>
       </ion-nav-back-button>
       <!-- nav button, shown if applicable -->
-      <ion-nav-buttons side="left" >
-        <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
-        </button>
-      </ion-nav-buttons>
+
 	  <ion-nav-buttons side="right" >
-	    <button class="button button-icon button-clear ion-power" ng-click="vm.signout()" ng-show="vm.currentUser.isAuthorized">
+	    <button class="button button-icon button-clear ion-power" ng-click="ctrl.signOut()" ng-show="ctrl.currentUser.isAuthorized">
 		</button>
 	  </ion-nav-buttons>
 
@@ -26,19 +23,6 @@
 
   </ion-side-menu-content>
 
-  <!-- SIDEMENU -->
-  <ion-side-menu side="left">
 
-    <!-- menu header -->
-    <ion-header-bar class="bar-positive">
-      <h1 class="title">{{title}}</h1>
-    </ion-header-bar>
-
-    <!-- menu content -->
-    <ion-content>
-
-    </ion-content>
-
-  </ion-side-menu>
 
 </ion-side-menus>

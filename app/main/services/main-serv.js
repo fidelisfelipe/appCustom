@@ -35,7 +35,6 @@ angular.module('main')
     $http.get('data/main/menus.json')
     .then(function (response) {
       if (response.status === 200) {
-        $log.log('get menus dinamic - main...');
         callback(response.data);
       } else {
         fail();

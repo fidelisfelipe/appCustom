@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html ng-app="app">
   <head>
     <meta charset="utf-8">
     <meta name="description" content="">
@@ -9,7 +9,7 @@
     <meta name="format-detection" content="telephone=no"> <!-- no auto telephone linking -->
 
     <meta name="apple-mobile-web-app-capable" content="yes"> <!-- can be saved to home screen on ios -->
-    <title></title>
+    <title>{{title}}</title>
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
     <!-- build:css styles/vendor.css -->
@@ -24,7 +24,7 @@
     <!-- endinject -->
     <!-- endbuild -->
   </head>
-  <body ng-app="app">
+  <body >
 
     <!-- the nav bar will be updated as we navigate between views -->
     <!-- <ion-nav-bar> can be removed when using sidemenu (contained in menu.html) -->
@@ -67,6 +67,7 @@
     <script src="main/services/flash-serv.js"></script>
     <script src="main/controllers/menu-ctrl.js"></script>
     <script src="main/controllers/list-ctrl.js"></script>
+    <script src="main/controllers/link-ctrl.js"></script>
     <script src="main/controllers/home-ctrl.js"></script>
     <script src="main/controllers/facebook-ctrl.js"></script>
     <script src="main/controllers/debug-ctrl.js"></script>

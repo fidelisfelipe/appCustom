@@ -2,108 +2,97 @@
 angular.module('authSocialBackand')
 .controller('AuthSocialBackandCtrl', function ($log, $state, $scope, $rootScope, $timeout, Utils, FlashService, Backand, AuthSocialBackandService) {
   $log.log('Hello from your Controller: AuthSocialBackandCtrl in module authSocialBackand:. This is your controller:', this);
-  var vm = this;
-  vm.data = {};
-//go states
-  vm.signUpGo = signUpGo;
-  vm.signInGo = signInGo;
-  vm.homeGo = homeGo;
-  vm.updateAccountGo = updateAccountGo;
-  vm.updatePasswordGo = passwordUpdateGo;
+  var bind = this;
+  bind.data = {};
 
-  vm.signin = signin;
-  vm.signUp = signUp;
-  vm.signout = signout;
-  vm.signinSocial = signinSocial;
+  bind.signUpGo = signUpGo;
+  bind.signInGo = signInGo;
+  bind.homeGo = homeGo;
+  bind.updateAccountGo = updateAccountGo;
+  bind.updatePasswordGo = passwordUpdateGo;
 
-  vm.updateAccount = updateAccount;
-  vm.toogleUpdate = function () {return !vm.showUpdate;};
+  bind.signIn = signIn;
+  bind.signUp = signUp;
+  bind.signOut = signOut;
+  bind.signinSocial = signinSocial;
+
+  bind.updateAccount = updateAccount;
+  bind.toogleUpdate = function () {return !bind.showUpdate;};
 
   (function init () {
-    vm.currentUser = AuthSocialBackandService.getUserCurrent();
-    vm.updatePwd = false;
-    vm.showUpdate = true;
-    $log.log('current state:', $state.current.name);
-    $log.debug('vm.currentUser:', vm.currentUser);
-    $log.debug('vm.updatePwd:', vm.updatePwd);
+    bind.currentUser = AuthSocialBackandService.getUserCurrent();
+    bind.updatePwd = false;
+    bind.showUpdate = true;
   })();
   function homeGo () {
-    $log.log('redirect...');
     $state.go('authSocialBackandHome');
   }
   function signinSocial (provider) {
     FlashService.Loading(true);
-    $log.log('check connection...');
     var flagOnline = true;//get status connection for ionic platform
-    if (!flagOnline) {
-      $log.log('sigin by pass: connect off... ');
-    } else {
-      $log.log('open plugin connection...');
+    if (flagOnline) {
     //verify localStorage flag off line use
       FlashService.Question('Ignition Internet Now?', function () {
-        AuthSocialBackandService.signinSocial(provider, authGo);
+        AuthSocialBackandService.signinSocial(provider, home);
       });
     }
 
     FlashService.Loading(false);
   }
 
-  function signout () {
+  function signOut () {
     FlashService.Question('Close Application Now?', function () {
-      AuthSocialBackandService.signout();
-      $state.go('authSocialBackandLogin');
+      AuthSocialBackandService.signout(login);
     });
   }
 
-  function signin () {
-    if (vm.email && vm.password) {
-      FlashService.Loading(true);
-      AuthSocialBackandService.signin(vm.email, vm.password, homeGo);
-      FlashService.Loading(false);
+  function signIn () {
+    FlashService.Loading(true);
+    if (bind.email && bind.password) {
+      AuthSocialBackandService.signin(bind.email, bind.password, home);
     } else {
-      $log.log('not sended info for login...');
+      FlashService.Loading(false);
       FlashService.Error('Set E-mail and Password...');
     }
   }
 
   function signUp () {
     FlashService.Loading(true);
-    AuthSocialBackandService.signup(vm.firstName, vm.lastName, vm.email, vm.password, vm.again, loginGo);
+    AuthSocialBackandService.signup(bind.firstName, bind.lastName, bind.email, bind.password, bind.again, login);
     FlashService.Loading(false);
   }
   function updateAccount () {
-    $log.debug('update data', vm.updatePwd);
     FlashService.Loading(true);
-    if (!vm.updatePwd) {
-      AuthSocialBackandService.updateAccount(vm.currentUser.firstName, vm.currentUser.lastName, vm.currentUser.userId);
+    if (!bind.updatePwd) {
+      AuthSocialBackandService.updateAccount(bind.currentUser.firstName, bind.currentUser.lastName, bind.currentUser.userId);
     } else {
-      AuthSocialBackandService.updatePassword(vm.currentUser.passwordCurrent, vm.currentUser.passwordNew);
+      AuthSocialBackandService.updatePassword(bind.currentUser.passwordCurrent, bind.currentUser.passwordNew);
     }
     FlashService.Loading(false);
     $state.go($state.current.name);
   }
 
   function updateAccountGo () {
-    vm.isUpdateAccount = true;
-    $state.go('authSocialBackandLogin');
-    $log.log('update account with login');
+    bind.isUpdateAccount = true;
+    $state.go('authSocialBackandAccount');
   }
 
   function signUpGo () {
     $state.go('authSocialBackandSignUp');
   }
   function signInGo () {
-    $state.go('authSocialBackandLogin');
+    $state.go('authSocialBackandSignIn');
   }
 
   function passwordUpdateGo () {
-    vm.isUpdatePassword = true;
-    $state.go('main.account');
+    bind.isUpdatePassword = true;
+    $state.go('authSocialBackandAccount');
   }
-  function authGo () {
-    $state.go('auth.home');//authSocialBackandLogin
+  function home () {
+    FlashService.Loading(false);
+    $state.go('main.home');
   }
-  function loginGo () {
+  function login () {
     $state.go('authSocialBackandLogin');
   }
 

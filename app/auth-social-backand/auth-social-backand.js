@@ -1,6 +1,8 @@
 'use strict';
-var $stateProviderRef = null;
 angular.module('authSocialBackand', [
+  'ionic',
+  'ngCordova',
+  'ui.router',
   'ngCookies',
   'ngMessages',
   'ui.utils.masks',
@@ -15,35 +17,44 @@ angular.module('authSocialBackand', [
 
   $httpProvider.interceptors.push('APIInterceptor');
 
-  $urlRouterProvider.otherwise('/auth/social/backand/login');
+  $urlRouterProvider.otherwise('main/home');
   // ROUTING with ui.router
-  $stateProviderRef = $stateProvider;
   $stateProvider
-    // this state is placed in the <ion-nav-view> in the index.html
-    .state('authSocialBackandHome', {
-      url: '/auth/social/backand/home',
-      templateUrl: 'auth-social-backand/templates/home.view.html',
-      cache: false,
-      controller: 'AuthSocialBackandCtrl as vm'
+    .state('auth', {
+      url: '/auth',
+      abstract: true,
+      templateUrl: 'auth-social-backand/templates/menu.html',
+      controller: 'AuthSocialBackandCtrl as ctrl',
+    }).state('auth.home', {
+      url: '/home',
+      views: {
+        'pageContent': {
+          templateUrl: 'auth-social-backand/templates/home.view.html',
+          controller: 'HomeCtrl as ctrl'
+        }
+      }
     })
-    .state('authSocialBackandLogin', {
-      url: '/auth/social/backand/login',
-      templateUrl: 'auth-social-backand/templates/login.view.html',
-      cache: false,
-      controller: 'AuthSocialBackandCtrl as vm'
-    })
-    .state('authSocialBackandSignUp', {
-      url: '/auth/social/backand/sigup',
-      templateUrl: 'auth-social-backand/templates/signUp.view.html',
-      cache: false,
-      controller: 'AuthSocialBackandCtrl as vm'
-    })
-    .state('authSocialBackandUpdateAccount', {
-      url: '/auth/social/backand/update/account',
+    .state('auth.login', {
+      url: '/login',
       views: {
         'pageContent': {
           templateUrl: 'auth-social-backand/templates/login.view.html',
-          controller: 'AuthSocialBackandCtrl as vm',
+          controller: 'AuthSocialBackandCtrl as ctrl',
+        }
+      },
+    })
+    .state('auth.signup', {
+      url: '/signup',
+      templateUrl: 'auth-social-backand/templates/signUp.view.html',
+      cache: false,
+      controller: 'AuthSocialBackandCtrl as ctrl'
+    })
+    .state('auth.account', {
+      url: '/account',
+      views: {
+        'pageContent': {
+          templateUrl: 'auth-social-backand/templates/account.view.html',
+          controller: 'AuthSocialBackandCtrl as ctrl',
         }
       },
       cache: false
@@ -70,27 +81,6 @@ angular.module('authSocialBackand', [
     Backand.setRunSignupAfterErrorInSigninSocial(true);
   });
 
-  $rootScope.menus = AuthSocialBackandService.menus(function setMenus (menus) {$log.log('response menus auth: ', menus);});
-//set state dinamic
-  angular.forEach($rootScope.menus, function (value) {
-    $log.log('Menu.name: ', value.name);
-    var state = {
-      'url': value.url,
-      'views': {}
-    };
-
-    angular.forEach(value.views, function (view)
-    {
-      state.views[view.name] = {
-        templateUrl: view.templateUrl,
-        controller: view.controller,
-      };
-    });
-    $stateProviderRef.state(value.name, state);
-  });
-//set state dinamic
-
   $rootScope.$on('$stateChangeSuccess', AuthSocialBackandService.onChangeSuccess);
-
 
 });

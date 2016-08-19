@@ -1,30 +1,27 @@
 'use strict';
 angular.module('main')
-.controller('AccountCtrl', function ($http, $timeout, $state, $log, Config, FlashService) {
+.controller('AccountCtrl', function ($http, $timeout, $state, $log, Config, FlashService, AuthSocialBackandService) {
   var bind = this;
   $log.log('Hello from your Controller: AccountCtrl in module main:. This is your controller:', this);
-  this.backendRequestUrl = Config.ENV.DOMAIN_BACKEND_URL;
-  bind.addStatus = '';
-  this.createAccount = function () {
-    this.submit = {test: {descricao: 'Descrição'}};
-    $log.log('send account');
-    FlashService.Loading(true, 'send request...');
-    $http({
-      url: this.backendRequestUrl + '/tests/add',
-      method: 'post',
-      data: this.submit
-    }).then(function (response) {
-      $log.log(response);
-      FlashService.Loading(false);
-      FlashService.Success('response:' + JSON.stringify(response.data));
-      bind.addStatus = response.status;
-      $state.go('main.home');
-    }.bind(this))
-      .then($timeout(function () {
-        FlashService.Loading(false);
-        if (bind.addStatus === '') {
-          FlashService.Error('Fail create account!');
-        }
-      }.bind(this), 6000));
-  };
+
+  bind.updateAccountGo = updateAccountGo;
+  bind.updatePasswordGo = updatePasswordGo;
+  bind.signOut = signOut;
+
+  function signOut () {
+    FlashService.Question('Close Application Now?', function () {
+      AuthSocialBackandService.signout(login);
+    });
+  }
+  function updateAccountGo () {
+    $log.log('main.account');
+    bind.isUpdateAccount = true;
+    $state.go('main.account');
+  }
+  function updatePasswordGo () {
+    $log.log('passwordUpdateGo');
+  }
+  function login () {
+    $log.log('login');
+  }
 });
