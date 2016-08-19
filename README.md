@@ -1,31 +1,6 @@
 # frontend-ionic
 This project was generated with Generator-M-Ionic v1.7.0. For more info visit the [repository](https://github.com/mwaylabs/generator-m-ionic) or check out the README below.
-##Configuration Heroku
-	
-
-# Generator-M-Ionic v1.7.0
-
-[![NPM version](http://img.shields.io/npm/v/generator-m-ionic.svg?style=flat-square)][npm-url]
-[![Coverage Status](http://img.shields.io/coveralls/mwaylabs/generator-m-ionic/master.svg?style=flat-square)][coveralls-url]
-[![Build Status](https://img.shields.io/travis/mwaylabs/generator-m-ionic/master.svg?style=flat-square)][travis-url]
-[![Dependency Status](http://img.shields.io/david/mwaylabs/generator-m-ionic/master.svg?style=flat-square)][daviddm-url]
-[![Download Month](http://img.shields.io/npm/dm/generator-m-ionic.svg?style=flat-square)][npm-url]
-
-[npm-url]: https://npmjs.org/package/generator-m-ionic
-[coveralls-url]: https://coveralls.io/r/mwaylabs/generator-m-ionic?branch=master
-[travis-url]: https://travis-ci.org/mwaylabs/generator-m-ionic
-[daviddm-url]: https://david-dm.org/mwaylabs/generator-m-ionic
-
-Development:
-
-[![Dev Coverage Status](http://img.shields.io/coveralls/mwaylabs/generator-m-ionic/dev.svg?style=flat-square)][coveralls-url]
-[![Dev Build Status](https://img.shields.io/travis/mwaylabs/generator-m-ionic/dev.svg?style=flat-square)][travis-url]
-[![Dev Dependency Status](http://img.shields.io/david/mwaylabs/generator-m-ionic/dev.svg?style=flat-square)](https://david-dm.org/mwaylabs/generator-m-ionic/dev)
-
-
-## Why you need it
-> Build mobile Cordova/PhoneGap apps quickly with the tools you love:
-Yeoman, Gulp, Bower, AngularJS, Ionic & of course Cordova. All in one sexy generator.
+## See https://fidelisfelipe.github.io/appCustom
 
 ### What's in the box
 
