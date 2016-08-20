@@ -42,18 +42,36 @@ angular.module('authSocialBackand')
 
   function signOut () {
     FlashService.Question('Close Application Now?', function () {
-      AuthSocialBackandService.signout(login);
+      AuthSocialBackandService.signout(home);
     });
   }
 
   function signIn () {
-    FlashService.Loading(true);
+    
     if (bind.email && bind.password) {
+      FlashService.Loading(true);
       AuthSocialBackandService.signin(bind.email, bind.password, home);
-    } else {
       FlashService.Loading(false);
+    } else {
       FlashService.Error('Set E-mail and Password...');
     }
+
+    if (bind.email && bind.password) {
+    FlashService.Loading(true);
+    var flagOnline = true;//get status connection for ionic platform
+    if (flagOnline) {
+    //verify localStorage flag off line use
+      FlashService.Question('Ignition Internet Now?', function () {
+        AuthSocialBackandService.signin(bind.email, bind.password, home);
+      });
+    }
+      FlashService.Loading(false);
+    } else {
+      
+    }
+
+  
+	
   }
 
   function signUp () {
@@ -78,7 +96,7 @@ angular.module('authSocialBackand')
   }
 
   function signUpGo () {
-    $state.go('authSocialBackandSignUp');
+    $state.go('auth.signup');
   }
   function signInGo () {
     $state.go('authSocialBackandSignIn');
@@ -89,11 +107,10 @@ angular.module('authSocialBackand')
     $state.go('authSocialBackandAccount');
   }
   function home () {
-    FlashService.Loading(false);
     $state.go('main.home');
   }
   function login () {
-    $state.go('authSocialBackandLogin');
+    $state.go('auth.login');
   }
 
 });

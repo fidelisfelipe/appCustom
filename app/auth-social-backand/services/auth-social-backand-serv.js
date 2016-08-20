@@ -57,12 +57,12 @@ angular.module('authSocialBackand')
     return Backand.signin(email, password)
       .then(function (response) {
         if (response.error && response.error_description) {
-          FlashService.Error(response.error_description);
+          FlashService.Error('Fail Signin', response.error_description);
         } else {
           onAuthorized(callback);
         }
       }, function (response) {
-        FlashService.Error(response);
+        FlashService.Error('Network Off?', response);
       });
   }
   //signup
@@ -99,10 +99,10 @@ angular.module('authSocialBackand')
   //onChangeSuccess
   function onChangeSuccess (event, toState) {
     $log.log('state change...');
-    if (toState.name === 'authSocialBackandLogin' && !Utils.isAuthorized) {
+    if (toState.name === 'auth.login' && !Utils.isAuthorized) {
       service.signout();
     }
-    else if (toState.name !== 'authSocialBackandLogin' && !Utils.isAuthorized && Backand.getToken() === undefined) {
+    else if (toState.name !== 'auth.login' && !Utils.isAuthorized && Backand.getToken() === undefined) {
       service.unauthorized();
     }
     else if (Backand.getToken() !== undefined && Backand.getToken() !== null && Backand.getToken().toString().length > -1) {

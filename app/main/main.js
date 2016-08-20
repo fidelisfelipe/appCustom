@@ -63,11 +63,14 @@ angular.module('main', [
       }
     });
 }).run(function ($rootScope, $state, $log, Main) {
-  $log.log('init module main');
-  $rootScope.$on('$stateChangeSuccess', function () {$log.log($state.current.name === 'main.debug'); if ($state.current.name === 'main.debug') {Main.backendOnline();}});
+  $rootScope.$on('$stateChangeSuccess', function () {
+    $log.debug('run', $state.current.name); 
+    if ($state.current.name === 'main.debug') {
+      Main.backendOnline();
+    }
+  });
   $rootScope.title = 'App Custom';
   Main.menus(function setMenus (menus) {
-    $log.log('menus main: ', menus);
     $rootScope.menus = menus;
   });
 

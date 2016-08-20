@@ -17,7 +17,7 @@ angular.module('authSocialBackand', [
 
   $httpProvider.interceptors.push('APIInterceptor');
 
-  $urlRouterProvider.otherwise('main/home');
+  $urlRouterProvider.otherwise('auth/login');
   // ROUTING with ui.router
   $stateProvider
     .state('auth', {

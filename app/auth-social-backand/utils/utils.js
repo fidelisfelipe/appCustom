@@ -25,7 +25,7 @@ angular.module('authSocialBackand')
         Utils.refreshUserCurrentRoot();
         FlashService.Success('Change account successfull...');
       } else {
-        FlashService.Error(response.data);
+        FlashService.Error('Change account fail...', response.data);
       }
     },
 //onErrorUpdateAccount
