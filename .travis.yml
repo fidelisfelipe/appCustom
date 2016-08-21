@@ -2,5 +2,5 @@ language: node_js
 node_js:
   - 'stable'
   - '0.12'
-install: npm install && gulp server
+install: npm install && gulp serve
 script: gulp build
