@@ -1,6 +1,11 @@
-# frontend-ionic
+# App Custom
+
 This project was generated with Generator-M-Ionic v1.7.0. For more info visit the [repository](https://github.com/mwaylabs/generator-m-ionic) or check out the README below.
-## See https://fidelisfelipe.github.io/appCustom
+
+###site https://fidelisfelipe.github.io/appCustom/
+###travis https://travis-ci.org/fidelisfelipe/appCustom
+###demo https://build.phonegap.com/apps/2220805/share
+###apk https://build.phonegap.com/apps/2220805/share
 
 ### What's in the box
 
