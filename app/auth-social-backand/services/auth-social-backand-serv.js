@@ -1,6 +1,6 @@
 'use strict';
 angular.module('authSocialBackand')
-.service('AuthSocialBackandService', function ($log, $state, $http, $timeout, Utils, Config, FlashService, Backand) {
+.service('AuthSocialBackandService', function ($log, $state, $http, $timeout, $rootScope, Utils, Config, FlashService, Backand) {
   $log.log('Hello from your Service: AuthSocialBackandService in module authSocialBackand');
   var service = this;
   service.signin = signin;
@@ -30,20 +30,21 @@ angular.module('authSocialBackand')
       }.bind(this), 2000));
   }
   //socialSignIn
-  function signinSocial (provider, callback) {
+  function signinSocial (provider) {
     return Backand.socialSignIn(provider).then(function () {
-      onAuthorized(callback);
+      onAuthorized();
+      $rootScope.$broadcast('signin');
     }, function (response) {
-      FlashService.Error(response.data && response.data.error_description || 'Fail on Login, retriver step...');
-      signout();
+      FlashService.Error('Fail signout...', response.data && response.data.error_description || 'Fail on Login, retriver step...');
+      $rootScope.$broadcast('signout');
     });
   }
   //signout
-  function signout (callback) {
+  function signout () {
     $log.log('signout...');
     Utils.setUserCurrentBlank();
-    callback();
-    return Backand.signout();
+    Backand.signout();
+    $rootScope.$broadcast('signout');
   }
   //unauthorized
   function unauthorized () {
@@ -52,14 +53,14 @@ angular.module('authSocialBackand')
     $state.go($state.current);
   }
   //signin
-  function signin (email, password, callback) {
+  function signin (email, password) {
     $log.log('signin...');
     return Backand.signin(email, password)
       .then(function (response) {
         if (response.error && response.error_description) {
           FlashService.Error('Fail Signin', response.error_description);
         } else {
-          onAuthorized(callback);
+          onAuthorized();
         }
       }, function (response) {
         FlashService.Error('Network Off?', response);
@@ -76,7 +77,7 @@ angular.module('authSocialBackand')
       });
   }
   //onAuthorized
-  function onAuthorized (callback) {
+  function onAuthorized () {
     $log.log('authorized...');
     Backand.getUserDetails().then(function (data) {
       if (data && data.username !== undefined && data.regId) {
@@ -90,7 +91,7 @@ angular.module('authSocialBackand')
         Utils.setIsAuthorized();
         //sincronize var user with root user
         Utils.refreshUserCurrentRoot();
-        callback();
+        $rootScope.$broadcast('signin');
       } else {
         $log.log('undefined user current...');
       }

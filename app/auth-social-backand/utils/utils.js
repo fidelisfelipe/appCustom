@@ -101,7 +101,6 @@ angular.module('authSocialBackand')
     },
 //isAutorized
     isAuthorized: function () {
-
       return user.isAuthorized;
     },
 //getUserCurrent

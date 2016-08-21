@@ -9,10 +9,9 @@ angular.module('main', [
 .config(function ($stateProvider, $urlRouterProvider) {
 
   // ROUTING with ui.router
-  $urlRouterProvider.otherwise('main/home');
+  $urlRouterProvider.otherwise('auth/login');
 
   $stateProvider
-    // this state is placed in the <ion-nav-view> in the index.html
     .state('main', {
       url: '/main',
       abstract: true,
@@ -31,10 +30,9 @@ angular.module('main', [
       views: {
         'pageContent': {
           templateUrl: 'main/templates/account.html',
-          controller: 'AuthSocialBackandCtrl as ctrl',
-          show: 'true'
+          controller: 'AuthSocialBackandCtrl as ctrl'
         }
-      }
+      },
     }).state('main.about', {
       url: '/about',
       views: {
@@ -64,7 +62,7 @@ angular.module('main', [
     });
 }).run(function ($rootScope, $state, $log, Main) {
   $rootScope.$on('$stateChangeSuccess', function () {
-    $log.debug('run', $state.current.name); 
+    $log.debug('run', $state.current.name);
     if ($state.current.name === 'main.debug') {
       Main.backendOnline();
     }

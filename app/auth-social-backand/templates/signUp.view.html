@@ -1,5 +1,5 @@
 <ion-view view-title="Register">
-  <!-- do you want padding? -->
+
   <ion-content >
     <div class="row row-top">
 	  <div class="col col-top"></div>
@@ -7,55 +7,53 @@
 	  <div class="col col-bottom"></div>
 	</div>
 
-			<form ng-submit="vm.signUp()" >
-				<div class="list">
-					<div class="row">
-						<div class="col">
-							<label class="item item-input">
-								<input id="email" name="email" type="email" placeholder="E-mail"
-									   ng-model="vm.email">
-							</label>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col">
-							<label class="item item-input">
-								<input id="firstname" name="firstname" type="text" placeholder="First name"
-									   ng-model="vm.firstName">
-							</label>
-						</div>
-						<div class="col">
-							<label class="item item-input">
-								<input id="username" name="lastname" type="text" placeholder="Last name"
-									   ng-model="vm.lastName">
-							</label>
-		
-						</div>
-					</div>
-					<div class="row">
-						<div class="col">
-		
-							<label class="item item-input">
-								<input id="password" name="password" type="password" placeholder="Enter password"
-									   ng-model="vm.password">
-							</label>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col">
-							<label class="item item-input">
-								<input id="again" name="again" type="password" placeholder="Confirm password"
-									   ng-model="vm.again">
-							</label>
-						</div>
-					</div>
-					<h4 style="color:red;" ng-bind="vm.errorMessage"></h4>
-					<button class="button button-full button-calm" type="submit">
-						Register
-					</button>
+	<form ng-submit="ctrl.signUp()" >
+		<div class="list">
+			<div class="row">
+				<div class="col">
+					<label class="item item-input">
+						<input id="email" name="email" type="email" placeholder="E-mail"
+							   ng-model="ctrl.email">
+					</label>
 				</div>
-			</form>
+			</div>
+			<div class="row">
+				<div class="col">
+					<label class="item item-input">
+						<input id="firstname" name="firstname" type="text" placeholder="First name"
+							   ng-model="ctrl.firstName">
+					</label>
+				</div>
+				<div class="col">
+					<label class="item item-input">
+						<input id="username" name="lastname" type="text" placeholder="Last name"
+							   ng-model="ctrl.lastName">
+					</label>
 
-	
+				</div>
+			</div>
+			<div class="row">
+				<div class="col">
+
+					<label class="item item-input">
+						<input id="password" name="password" type="password" placeholder="Enter password"
+							   ng-model="ctrl.password">
+					</label>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col">
+					<label class="item item-input">
+						<input id="again" name="again" type="password" placeholder="Confirm password"
+							   ng-model="ctrl.again">
+					</label>
+				</div>
+			</div>
+			<h4 style="color:red;" ng-bind="ctrl.errorMessage"></h4>
+			<button class="button button-full button-calm" type="submit">
+				Register
+			</button>
+		</div>
+	</form>
   </ion-content>
 </ion-view>

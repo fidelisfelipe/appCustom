@@ -33,45 +33,32 @@ angular.module('authSocialBackand')
     if (flagOnline) {
     //verify localStorage flag off line use
       FlashService.Question('Ignition Internet Now?', function () {
-        AuthSocialBackandService.signinSocial(provider, home);
+        AuthSocialBackandService.signinSocial(provider);
       });
     }
-
     FlashService.Loading(false);
   }
 
   function signOut () {
     FlashService.Question('Close Application Now?', function () {
-      AuthSocialBackandService.signout(home);
+      AuthSocialBackandService.signout();
     });
   }
 
   function signIn () {
-    
     if (bind.email && bind.password) {
       FlashService.Loading(true);
-      AuthSocialBackandService.signin(bind.email, bind.password, home);
+      var flagOnline = true;//get status connection for ionic platform
+      if (flagOnline) {
+      //verify localStorage flag off line use
+        FlashService.Question('Ignition Internet Now?', function () {
+          AuthSocialBackandService.signin(bind.email, bind.password);
+        });
+      }
       FlashService.Loading(false);
     } else {
       FlashService.Error('Set E-mail and Password...');
     }
-
-    if (bind.email && bind.password) {
-    FlashService.Loading(true);
-    var flagOnline = true;//get status connection for ionic platform
-    if (flagOnline) {
-    //verify localStorage flag off line use
-      FlashService.Question('Ignition Internet Now?', function () {
-        AuthSocialBackandService.signin(bind.email, bind.password, home);
-      });
-    }
-      FlashService.Loading(false);
-    } else {
-      
-    }
-
-  
-	
   }
 
   function signUp () {
@@ -105,9 +92,6 @@ angular.module('authSocialBackand')
   function passwordUpdateGo () {
     bind.isUpdatePassword = true;
     $state.go('authSocialBackandAccount');
-  }
-  function home () {
-    $state.go('main.home');
   }
   function login () {
     $state.go('auth.login');

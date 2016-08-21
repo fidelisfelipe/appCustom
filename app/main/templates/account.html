@@ -2,19 +2,19 @@
   <!-- do you want padding? -->
   <ion-content class="padding">
 	  <!-- where login on -->
-	<div ng-show="ctrl.currentUser.isAuthorized">
+	<div ng-show="currentUser.isAuthorized">
 		<div class="list card">
 		  <div class="item item-avatar">
 		    <img ng-src="main/assets/images/profile.jpg">
-		    <h2>{{ctrl.currentUser.firstName}} {{ctrl.currentUser.lastName}}</h2>
-		    <p>{{ctrl.currentUser.username}}</p>
+		    <h2>{{currentUser.firstName}} {{currentUser.lastName}}</h2>
+		    <p>{{currentUser.username}}</p>
 		  </div>
 		</div>
 
 	</div>
 
 <!-- login on - update data -->
-	<div class="list" ng-show="ctrl.currentUser.isAuthorized && ctrl.showUpdate">
+	<div class="list" ng-show="currentUser.isAuthorized && ctrl.showUpdate">
         <div class="button-bar" >
 			<button class="button button-block button-positive ion-gear-a" ng-click="ctrl.updatePwd = !ctrl.updatePwd;" ng-class="{'button button-block button-stable': ctrl.updatePwd, 'button button-block button-positive': !ctrl.updatePwd}">
 			</button>
@@ -23,18 +23,18 @@
 		</div>
 		<div class="list" ng-hide="ctrl.updatePwd">
 			<label class="item item-input">
-				First Name:&nbsp;<input id="firstName" name="firstName" type="text" placeholder="First Name" ng-model="ctrl.currentUser.firstName" >
+				First Name:&nbsp;<input id="firstName" name="firstName" type="text" placeholder="First Name" ng-model="currentUser.firstName" >
 			</label>
 			<label class="item item-input">
-				Last Name:&nbsp;<input id="lastName" name="lastName" type="text" placeholder="Last Name" ng-model="ctrl.currentUser.lastName" >
+				Last Name:&nbsp;<input id="lastName" name="lastName" type="text" placeholder="Last Name" ng-model="currentUser.lastName" >
 			</label>
 		</div>
 		<div class="list" ng-show="ctrl.updatePwd">
 			<label class="item item-input">
-				Current Pwd:&nbsp;<input id="password" name="passwordCurrent" type="password" placeholder="Password Current" ng-model="ctrl.currentUser.passwordCurrent">
+				Current Pwd:&nbsp;<input id="password" name="passwordCurrent" type="password" placeholder="Password Current" ng-model="currentUser.passwordCurrent">
 			</label>
 			<label class="item item-input">
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;New Pwd:&nbsp;<input id="password" name="passwordNew" type="password" placeholder="Password New" ng-model="ctrl.currentUser.passwordNew">
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;New Pwd:&nbsp;<input id="password" name="passwordNew" type="password" placeholder="Password New" ng-model="currentUser.passwordNew">
 			</label>
 		</div>
 		<div class="button-bar" >
@@ -46,8 +46,8 @@
 
 <!-- off line -->
 	<!-- where login off -->
-<form ng-submit="ctrl.signin()" ng-hide="ctrl.currentUser.isAuthorized">
-	<h3 style="text-align: center">Login</h3>
+<form ng-submit="ctrl.signin()" ng-hide="currentUser.isAuthorized">
+	<h3 style="text-align: center">Login dasdas</h3>
 	<div class="row row-center">
 	  <div class="col col-center">
 			  <div class="list">
@@ -74,7 +74,7 @@
 </form>
 	
 <!-- where login off - social sign in -->
-<div class="button-bar" ng-hide="ctrl.currentUser.isAuthorized">
+<div class="button-bar" ng-hide="currentUser.isAuthorized">
 	<button class="button button-positive icon-left ion-social-facebook" ng-click="ctrl.signinSocial('facebook')" type="button">
 		Facebook
 	</button>

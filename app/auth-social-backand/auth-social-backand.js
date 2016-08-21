@@ -39,28 +39,22 @@ angular.module('authSocialBackand', [
       views: {
         'pageContent': {
           templateUrl: 'auth-social-backand/templates/login.view.html',
-          controller: 'AuthSocialBackandCtrl as ctrl',
+          controller: 'AuthSocialBackandCtrl as ctrl'
         }
       },
     })
     .state('auth.signup', {
       url: '/signup',
-      templateUrl: 'auth-social-backand/templates/signUp.view.html',
-      cache: false,
-      controller: 'AuthSocialBackandCtrl as ctrl'
-    })
-    .state('auth.account', {
-      url: '/account',
       views: {
         'pageContent': {
-          templateUrl: 'auth-social-backand/templates/account.view.html',
-          controller: 'AuthSocialBackandCtrl as ctrl',
+          templateUrl: 'auth-social-backand/templates/signUp.view.html',
+          cache: false,
+          controller: 'AuthSocialBackandCtrl as ctrl'
         }
-      },
-      cache: false
+      }
     });
 
-}).run(function ($ionicPlatform, $rootScope, $state, $log, AuthSocialBackandService, Backand) {
+}).run(function ($ionicPlatform, $rootScope, $state, $log, AuthSocialBackandService, Utils, Backand) {
 
   $ionicPlatform.ready(function () {
 
@@ -82,5 +76,13 @@ angular.module('authSocialBackand', [
   });
 
   $rootScope.$on('$stateChangeSuccess', AuthSocialBackandService.onChangeSuccess);
+  $rootScope.$on('signout', function () {
+    $log.log('receiver in auth signout...');
+    $state.go('auth.login');
+  });
+  $rootScope.$on('signin', function () {
+    $log.log('receiver in auth signin...');
+    $state.go('main.home');
+  });
 
 });

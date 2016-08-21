@@ -1,41 +1,42 @@
-<ion-view view-title="{{title}}">
-  <!-- do you want padding? -->
-  <ion-content >
-	<!-- where login off -->
-<form ng-submit="ctrl.signIn()" ng-hide="ctrl.currentUser.isAuthorized">
-	<h3 style="text-align: center">Login</h3>
-	<div class="row row-center">
-	  <div class="col col-center">
-			  <div class="list">
-				<label class="item item-input">
-					<input id="email" name="email" type="email" placeholder="E-mail" ng-model="ctrl.email">
-				</label>
-				<label class="item item-input">
-					<input id="password" name="password" type="password" placeholder="Password" ng-model="ctrl.password">
-				</label>
-			  </div>	
-	  </div>
-	</div>
-	
+<ion-view view-title="Login">
 
-	  	<button class="button button-full button-positive" type="submit">
+  <ion-content >
+    <div class="row row-top">
+	  <div class="col col-top"></div>
+	  <div class="col col-center"><h3>Login</h3></div>
+	  <div class="col col-bottom"></div>
+	</div>
+	<!-- where login off -->
+	<form ng-submit="ctrl.signIn()" ng-hide="currentUser.isAuthorized">
+		<div class="row row-center">
+		  <div class="col col-center">
+				  <div class="list">
+					<label class="item item-input">
+						<input id="email" name="email" type="email" placeholder="E-mail" ng-model="ctrl.email">
+					</label>
+					<label class="item item-input">
+						<input id="password" name="password" type="password" placeholder="Password" ng-model="ctrl.password">
+					</label>
+				  </div>	
+		  </div>
+		</div>
+
+		<button class="button button-full button-positive" type="submit">
 			Login
 		</button>
-		
-
-</form>
+	</form>
 	
 <!-- where login off - social sign in -->
 
-	<button ng-hide="ctrl.currentUser.isAuthorized" class="button button-full button-positive icon-left ion-social-facebook" ng-click="ctrl.signinSocial('facebook')" type="button">
+	<button ng-hide="currentUser.isAuthorized" class="button button-full button-positive icon-left ion-social-facebook" ng-click="ctrl.signinSocial('facebook')" type="button">
 		Facebook
 	</button>
-	<button ng-hide="ctrl.currentUser.isAuthorized" class="button button-full button-assertive icon-left ion-social-googleplus" ng-click="ctrl.signinSocial('google')" type="button">
+	<button ng-hide="currentUser.isAuthorized" class="button button-full button-assertive icon-left ion-social-googleplus" ng-click="ctrl.signinSocial('google')" type="button">
 		Google+
 	</button>
 
-		<a class="button button-full button-calm" ng-click="ctrl.signUpGo()" ng-hide="ctrl.currentUser.isAuthorized" >
-			New be? Register
-		</a>
+	<a class="button button-full button-calm" ng-click="ctrl.signUpGo()" ng-hide="currentUser.isAuthorized" >
+		New be? Register
+	</a>
   </ion-content>
 </ion-view>
