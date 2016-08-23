@@ -6,7 +6,9 @@ This project was generated with Generator-M-Ionic v1.7.0. For more info visit th
 ###travis https://travis-ci.org/fidelisfelipe/appCustom
 ###demo https://build.phonegap.com/apps/2220805/share
 ###apk https://build.phonegap.com/apps/2220805/share
-
+## create dev features
+###yo m-ionic:pair feature module//create ctrl end html pair
+###yo m-ionic:module //create new module
 ### What's in the box
 
 <p align="center">

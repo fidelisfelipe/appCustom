@@ -77,6 +77,15 @@ angular.module('main', [
           show: 'true'
         }
       }
+    }).state('main.upload', {
+      url: '/upload',
+      views: {
+        'pageContent': {
+          templateUrl: 'main/templates/upload.html',
+          controller: 'UploadCtrl as ctrl',
+          show: 'true'
+        }
+      }
     });
 }).run(function ($rootScope, $state, $log, Main) {
   $rootScope.$on('$stateChangeSuccess', function () {
