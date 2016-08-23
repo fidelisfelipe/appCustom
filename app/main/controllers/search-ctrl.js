@@ -4,7 +4,7 @@ angular.module('main').factory('Movies', function ($http, $log) {
 
   function getData (moviename, apiKey, callback) {
 
-    var url = 'http://api.themoviedb.org/3/',
+    var url = 'https://api.themoviedb.org/3/',
       mode = 'search/movie?query=',
       name = '&query=' + encodeURI(moviename),
       key = '&api_key=' + apiKey;
