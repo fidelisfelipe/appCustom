@@ -4,4 +4,6 @@ angular.module('app', [
 // starting with the main module
   'main',
   'authSocialBackand',
-]);
+]).run(function ($rootScope) {
+  $rootScope.title = 'App Custom';
+});

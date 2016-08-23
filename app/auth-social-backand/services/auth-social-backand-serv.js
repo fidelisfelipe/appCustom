@@ -108,6 +108,7 @@ angular.module('authSocialBackand')
     }
     else if (Backand.getToken() !== undefined && Backand.getToken() !== null && Backand.getToken().toString().length > -1) {
       $log.debug('token valid...');
+      $state.go(toState.name);
     }
   }
   //updatePassword

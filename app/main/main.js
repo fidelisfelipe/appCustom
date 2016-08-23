@@ -59,6 +59,24 @@ angular.module('main', [
           show: 'true'
         }
       }
+    }).state('main.search', {
+      url: '/search',
+      views: {
+        'pageContent': {
+          templateUrl: 'main/templates/search.html',
+          controller: 'SearchCtrl as ctrl',
+          show: 'true'
+        }
+      }
+    }).state('main.setting', {
+      url: '/setting',
+      views: {
+        'pageContent': {
+          templateUrl: 'main/templates/setting.html',
+          controller: 'SettingCtrl as ctrl',
+          show: 'true'
+        }
+      }
     });
 }).run(function ($rootScope, $state, $log, Main) {
   $rootScope.$on('$stateChangeSuccess', function () {
@@ -67,7 +85,6 @@ angular.module('main', [
       Main.backendOnline();
     }
   });
-  $rootScope.title = 'App Custom';
   Main.menus(function setMenus (menus) {
     $rootScope.menus = menus;
   });
