@@ -7,6 +7,6 @@ describe('main.home', function () {
   });
 
   it('should open main.home page', function () {
-    console.log('opeded?');
+
   });
 });

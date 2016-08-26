@@ -13,7 +13,7 @@ angular.module('authSocialBackand', [
 .config(function ($stateProvider, $urlRouterProvider, $httpProvider, BackandProvider) {
 
   BackandProvider.setAppName('appcustom');
-  BackandProvider.setSignUpToken('f62f5306-741b-4d82-9bc1-5917704dc9a6');
+  BackandProvider.setAnonymousToken('a74e0f4e-94d9-49ee-a13c-2f3f30405d63'); //change prod to setSignUpToken end token
 
   $httpProvider.interceptors.push('APIInterceptor');
 

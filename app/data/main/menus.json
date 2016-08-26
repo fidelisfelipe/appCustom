@@ -18,4 +18,7 @@
   },
   {
     "id": 8, "title": "Setting", "name": "main.setting",  "show": "currentUser.isAdmin", "url": "/setting", "views": [{"name": "pageContent", "templateUrl": "main/templates/setting.html", "controller": "SettingCtrl as ctrl"}]
+  },
+  {
+    "id": 9, "title": "Upload", "name": "main.upload",  "show": "currentUser.isAdmin", "url": "/upload", "views": [{"name": "pageContent", "templateUrl": "main/templates/upload.html", "controller": "UploadCtrl as ctrl"}]
   }]
