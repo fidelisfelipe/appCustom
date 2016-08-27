@@ -14,12 +14,18 @@
 
     <!-- build:css styles/vendor.css -->
     <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/waves/dist/waves.min.css" />
+    <link rel="stylesheet" href="bower_components/ionic-material/dist/ionic.material.css" />
+    <link rel="stylesheet" href="bower_components/ionic-material/dist/ionic.material.min.css" />
+    <link rel="stylesheet" href="bower_components/sir-accordion/dist/styles/sir-accordion.css" />
     <!-- endbower -->
     <!-- endbuild -->
 
     <!-- build:css main/styles/app.css -->
     <!-- inject:css -->
     <link rel="stylesheet" href="auth-social-backand/styles/auth-social-backand.css">
+    <link rel="stylesheet" href="delivery/styles/delivery.css">
+    <link rel="stylesheet" href="delivery/styles/style.css">
     <link rel="stylesheet" href="main/styles/main.css">
     <link rel="stylesheet" href="main/styles/upload.css">
     <!-- endinject -->
@@ -58,9 +64,21 @@
     <script src="bower_components/localforage/dist/localforage.js"></script>
     <script src="bower_components/angular-localforage/dist/angular-localForage.js"></script>
     <script src="bower_components/angularbknd-sdk/dist/backand.min.js"></script>
+    <script src="bower_components/waves/dist/waves.min.js"></script>
+    <script src="bower_components/ionic-material/dist/ionic.material.js"></script>
+    <script src="bower_components/ionic-material/dist/ionic.material.min.js"></script>
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/velocity/velocity.js"></script>
+    <script src="bower_components/velocity/velocity.ui.js"></script>
+    <script src="bower_components/sir-accordion/dist/scripts/sir-accordion.js"></script>
+    <script src="bower_components/ionic-image-lazy-load/ionic-image-lazy-load.js"></script>
+    <script src="bower_components/angular-mocks/angular-mocks.js"></script>
+    <script src="bower_components/ngstorage/ngStorage.js"></script>
+    <script src="bower_components/ionic-datepicker/dist/ionic-datepicker.bundle.min.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
-    
+	<script src="bower_components/ionic-shop/dist/ion-cart.js"></script>
+    <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
     <!-- build:js scripts/app.js -->
     <!-- inject:js -->
     <script src="main/main.js"></script>
@@ -78,6 +96,11 @@
     <script src="main/controllers/config-ctrl.js"></script>
     <script src="main/controllers/account-ctrl.js"></script>
     <script src="main/constants/config-const.js"></script>
+    <script src="delivery/delivery.js"></script>
+    <script src="delivery/controllers/home-ctrl.js"></script>
+    <script src="delivery/controllers/connection-ctrl.js"></script>
+    <script src="delivery/controllers/app-ctrl.js"></script>
+    <script src="delivery/constants/delivery-config-const.js"></script>
     <script src="auth-social-backand/auth-social-backand.js"></script>
     <script src="auth-social-backand/utils/utils.js"></script>
     <script src="auth-social-backand/services/flash-serv.js"></script>
