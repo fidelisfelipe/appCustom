@@ -119,6 +119,7 @@
     "cordova-plugin-x-socialsharing",
     "cordova-plugin-email-composer",
     "cordova-sms-plugin",
+    "cordova.geolocation",
     {
       "locator": "https://github.com/devgeeks/Canvas2ImagePlugin.git",
       "id": "org.devgeeks.Canvas2ImagePlugin"
