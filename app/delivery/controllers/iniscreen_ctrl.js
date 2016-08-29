@@ -1,57 +1,52 @@
 'use strict';
 angular.module('delivery.controllers')
-.controller('IniscreenCtrl', function($scope,$rootScope,$location,$ionicSideMenuDelegate,$ionicHistory) {
+.controller('IniscreenCtrl', function ($scope, $rootScope, $location, $ionicSideMenuDelegate, $ionicHistory) {
 
-	$ionicSideMenuDelegate.canDragContent(false); // hide sidemenu
+  $ionicSideMenuDelegate.canDragContent(false); // hide sidemenu
 
-	$scope.loginButton = function(){ $location.path("app/inilogin"); }
-	$scope.signupButton = function(){ $location.path("app/inisignup"); }
-	$scope.skipButton = function(){ $location.path("app/select-location"); }
-	
-
+  $scope.loginButton = function () { $location.path("app/inilogin");}
+  $scope.signupButton = function () { $location.path("app/inisignup");}
+  $scope.skipButton = function () { $location.path("app/select-location");}
 })
 
-.controller('IniLocationCtrl', function($scope,$rootScope,$location,$cordovaGeolocation,$timeout,usersService,progressService,$ionicSideMenuDelegate,$ionicHistory) {
-	'use strict';
-	$ionicSideMenuDelegate.canDragContent(false); // hide sidemenu
-	
-	$scope.getAddress = function(attrs){
-			progressService.showLoader();
-			var geocoder = new google.maps.Geocoder();
-			var latlng = new google.maps.LatLng(attrs.lat, attrs.lng);
-			geocoder.geocode({ 'latLng': latlng }, function (results, status) {
-				if (status == google.maps.GeocoderStatus.OK) {
-					if (results[1]) {
-						$scope.userAddress = results[1].formatted_address;
-						progressService.hideLoader();
-						$timeout(function(){ $location.path("app/dashboard");  }, 1500);
-					} else {
-						$scope.userAddress = 'Location not found';
-					}
-				} else {
-					$scope.userAddress = 'Geocoder failed due to: ' + status;
-				}
-			});
-	}
+.controller('IniLocationCtrl', function($scope, $rootScope, $location, $cordovaGeolocation, $timeout, usersService, progressService, $ionicSideMenuDelegate, $ionicHistory) {
+  $ionicSideMenuDelegate.canDragContent(false); // hide sidemenu
 
-	$scope.findLocation = function(){
-		  var posOptions = {timeout: 10000, enableHighAccuracy: false};
-		  $cordovaGeolocation
-			.getCurrentPosition(posOptions)
-			.then(function (position) {
-			  var lat  = position.coords.latitude
-			  var lng = position.coords.longitude
-				$scope.getAddress({lat:lat,lng:lng});
+  $scope.getAddress = function (attrs) {
+    progressService.showLoader();
+    var geocoder = new google.maps.Geocoder();
+    var latlng = new google.maps.LatLng(attrs.lat, attrs.lng);
+    geocoder.geocode({ 'latLng': latlng }, function (results, status) {
+      if (status == google.maps.GeocoderStatus.OK) {
+        if (results[1]) {
+          $scope.userAddress = results[1].formatted_address;
+          progressService.hideLoader();
+          $timeout(function (){ $location.path("app/dashboard");  }, 1500);
+        } else {
+          $scope.userAddress = 'Location not found';
+        }
+      } else {
+        $scope.userAddress = 'Geocoder failed due to: ' + status;
+      }
+    });
+  }
 
+  $scope.findLocation = function (){
+    var posOptions = {timeout: 10000, enableHighAccuracy: false};
+    $cordovaGeolocation
+      .getCurrentPosition(posOptions)
+      .then(function (position) {
+        var lat  = position.coords.latitude
+        var lng = position.coords.longitude
+        $scope.getAddress({lat:lat,lng:lng});
+    }, function (err) {
+// error
+     });
+  }
 
-			}, function(err) {
-			  // error
-		  });
-	}
+  //$scope.findLocation();
 
-	//$scope.findLocation();
-
-    $scope.setLocation = function(data){
+    $scope.setLocation = function (data) {
 		$scope.userLocation = data;
 		
 		var lng  = data.geometry.location.lng();

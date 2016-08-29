@@ -33,7 +33,7 @@ angular.module('delivery', [
     views: {
       'menuContent': {
         templateUrl: 'delivery/templates/connection/connection.html',
-		controller: 'ConnectionCtrl'
+        controller: 'ConnectionCtrl'
       }
     }
   })
@@ -43,7 +43,7 @@ angular.module('delivery', [
     views: {
       'menuContent': {
         templateUrl: 'delivery/templates/iniscreen/iniscreen.html',
-		controller: 'IniscreenCtrl'
+        controller: 'IniscreenCtrl'
       }
     }
   })
@@ -53,7 +53,7 @@ angular.module('delivery', [
     views: {
       'menuContent': {
         templateUrl: 'delivery/templates/iniscreen/select-location.html',
-		controller: 'IniLocationCtrl'
+        controller: 'IniLocationCtrl'
       }
     }
   })
@@ -63,7 +63,7 @@ angular.module('delivery', [
     views: {
       'menuContent': {
         templateUrl: 'delivery/templates/iniscreen/inisignup.html',
-		controller: 'IniSignupCtrl'
+        controller: 'IniSignupCtrl'
       }
     }
   })
@@ -73,7 +73,7 @@ angular.module('delivery', [
     views: {
       'menuContent': {
         templateUrl: 'delivery/templates/iniscreen/inilogin.html',
-		controller: 'IniLoginCtrl'
+        controller: 'IniLoginCtrl'
       }
     }
   })
@@ -83,13 +83,13 @@ angular.module('delivery', [
     views: {
       'menuContent': {
         templateUrl: 'delivery/templates/dashboard/dashboard.html',
-		controller: 'DashboardCtrl'
+        controller: 'DashboardCtrl'
       }
     }
   })
 
  .state('app.products', {
-	cache:false,
+    cache:false,
     url: '/products/:catid',
     views: {
       'menuContent': {
@@ -132,7 +132,7 @@ angular.module('delivery', [
 
 //-----------------
  .state('app.shopping-cart', {
-	cache:false,
+    cache:false,
     url: '/shopping-cart',
     views: {
       'menuContent': {
@@ -143,7 +143,7 @@ angular.module('delivery', [
   })
 
  .state('app.delivery-address', {
-	cache:false,
+    cache:false,
     url: '/delivery-address',
     views: {
       'menuContent': {
@@ -154,7 +154,7 @@ angular.module('delivery', [
   })
 
   .state('app.delivery-options', {
-	cache:false,
+    cache:false,
     url: '/delivery-options',
     views: {
       'menuContent': {
@@ -165,7 +165,7 @@ angular.module('delivery', [
   })
 
 .state('app.place-order', {
-	cache:false,
+    cache:false,
     url: '/place-order',
     views: {
       'menuContent': {
@@ -176,7 +176,7 @@ angular.module('delivery', [
   })
 
 .state('app.order-status', {
-	cache:false,
+    cache:false,
     url: '/order-status/:status_id',
     views: {
       'menuContent': {
@@ -187,7 +187,7 @@ angular.module('delivery', [
   })
 //-----------------
  .state('app.orders', {
-	cache:false,
+    cache:false,
     url: '/orders',
     views: {
       'menuContent': {
@@ -203,15 +203,15 @@ angular.module('delivery', [
     views: {
       'menuContent': {
         templateUrl: 'delivery/templates/profile/profile.html',
-		controller: 'ProfileCtrl'
+        controller: 'ProfileCtrl'
       }
     }
   });
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/connection');
 
-}).run(function($ionicPlatform,$rootScope,$ionicPopup,$cordovaToast) {
-  $ionicPlatform.ready(function() {
+}).run(function($ionicPlatform, $rootScope, $ionicPopup, $cordovaToast) {
+  $ionicPlatform.ready(function () {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
     if (window.cordova && window.cordova.plugins.Keyboard) {
@@ -224,33 +224,32 @@ angular.module('delivery', [
       StatusBar.styleDefault();
     }
 
-	//----------------------
-	$rootScope.isCartIconVisible = false;
-	$rootScope.$on("$stateChangeStart", function(event, toState, toParams, fromState, fromParams){
-		if(toState.name=='app.dashboard' || toState.name=='app.products' || toState.name=='app.products-detail' || toState.name=='app.filter' || toState.name=='app.search' ){
-			$rootScope.isCartIconVisible = true;
-		}else{
-			$rootScope.isCartIconVisible = false;
-		}
-	});
-	//----------------------
-		$rootScope.tostMsg = function(msg){
-			$cordovaToast
-			.showShortTop(msg)
-			.then(function(success) {
-				// success
-			}, function (error) {
-				// error
-			});
-		}
-	//----------------------
-	 $rootScope.showAlert = function(msg) {	 
-		 $ionicPopup.alert({ 
-				title: 'Information', template: msg,
-				buttons: [ { text: 'OK',type: 'button-balanced', } ]
-			 });	
-		 };
+//----------------------
+    $rootScope.isCartIconVisible = false;
+    $rootScope.$on("$stateChangeStart", function(event, toState, toParams, fromState, fromParams){
+      if (toState.name === 'app.dashboard' || toState.name === 'app.products' || toState.name === 'app.products-detail' || toState.name === 'app.filter' || toState.name === 'app.search' ) {
+        $rootScope.isCartIconVisible = true;
+      } else {
+        $rootScope.isCartIconVisible = false;
+      }
+    });
+//----------------------
+    $rootScope.tostMsg = function(msg){
+      $cordovaToast
+        .showShortTop(msg)
+        .then(function(success) {
+// success
+        }, function (error) {
+// error
+        });
+    }
+//----------------------
+    $rootScope.showAlert = function (msg) {	 
+      $ionicPopup.alert({ 
+        title: 'Information', template: msg, buttons: [ { text: 'OK',type: 'button-balanced', } ]
+      });
+    };
 
-	//----------------------
+//----------------------
   });
 });
