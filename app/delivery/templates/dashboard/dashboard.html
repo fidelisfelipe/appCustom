@@ -16,7 +16,7 @@
 		</ion-slide-box>
 	</div>
 
-	<ion-scroll direction="x" class="catScroll">
+	<ion-scroll direction="x" class="catScroll" >
 			<a href="#/app/products/{{catObj.category_id}}" class="button" ng-repeat="catObj in accordionArray">
 				<img  ng-src="{{catObj.large_icon}}" width="55" />
 				<p>{{catObj.title|lowercase}}</p>

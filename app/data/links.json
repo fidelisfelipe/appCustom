@@ -1,3 +1,0 @@
-[{
-    "id": 1, "title": "Home", "name": "main.home",  "show": "vm.currentUser.isAuthorized", "url": "/home", "views": [{"name": "pageContent", "templateUrl": "main/templates/home.html", "controller": "HomeCtrl as vm"}]
-  }]

@@ -3,17 +3,17 @@
   //Service Module for ionic-shop
   var app = angular.module('ionicShop.services', ['ionic']);
   //PRODUCT SERVICE HOLDING ALL ITEMS
-  app.service('eCart',['$http', function($http){
+  app.service('eCart', ['$http', function ($http) {
 
     this.galleryProducts = [];
     this.cartProducts = [];
     this.checkout = {};
-	this.isAvailable = true;
+    this.isAvailable = true;
 
-    this.addToCart = function(product){
-	  this.isAvailable = true;
+    this.addToCart = function (product) {
+      this.isAvailable = true;
       var productInCart = false;
-      this.cartProducts.forEach(function(prod, index, prods){
+      this.cartProducts.forEach(function (prod, index, prods) {
         if (prod.id === product.id) {
           productInCart = prod;
           return;
@@ -24,14 +24,14 @@
         this.addOneProduct(productInCart);
       } else {
         product.purchaseQuantity = 0;
-        product.total = '<i class="fa fa-usd" > '+(parseFloat(product.special)*1)+'</i>';
+        product.total = '<i class="fa fa-usd" > '+(parseFloat(product.special)*1) + '</i>';
         this.addOneProduct(product);
         this.cartProducts.push(product);
       }
     };
 
-    this.removeProduct = function(product) {
-      this.cartProducts.forEach(function(prod, i, prods){
+    this.removeProduct = function (product) {
+      this.cartProducts.forEach(function (prod, i, prods) {
         if (product.id === prod.id) {
           this.cartProducts.splice(i, 1);
           this.updateTotal();
@@ -39,67 +39,67 @@
       }.bind(this));
     };
 
-    this.addOneProduct = function(product) {
-		
-		if(product.quantity>0){
-			this.isAvailable = true;
-			--product.quantity;
-			++product.purchaseQuantity;
-			product.total = '<i class="fa fa-usd" > '+(parseFloat(product.special)*parseInt(product.purchaseQuantity))+'</i>';
-		}else{
-			this.isAvailable = false;
-		}
-     
+    this.addOneProduct = function (product) {
+
+      if (product.quantity>0) {
+        this.isAvailable = true;
+        --product.quantity;
+        ++product.purchaseQuantity;
+        product.total = '<i class="fa fa-usd" > ' + (parseFloat(product.special)*parseInt(product.purchaseQuantity)) + '</i>';
+      } else {
+        this.isAvailable = false;
+      }
+
       this.updateTotal();
     };
 
-    this.removeOneProduct = function(product) {
-	  this.isAvailable = true;
+    this.removeOneProduct = function (product) {
+      this.isAvailable = true;
       ++product.quantity;
       --product.purchaseQuantity;
-	   product.total = '<i class="fa fa-usd" > '+(parseFloat(product.special)*parseInt(product.purchaseQuantity))+'</i>';
+      product.total = '<i class="fa fa-usd" > ' + (parseFloat(product.special)*parseInt(product.purchaseQuantity)) + '</i>';
 
-	  	if(product.purchaseQuantity<=0)this.removeProduct(product);
+      if (product.purchaseQuantity<=0) {this.removeProduct(product);}
 
       this.updateTotal();
     };
 
-    this.cartTotal = function() {
+    this.cartTotal = function () {
       var total = 0;
-	  if(this.cartProducts.length>0){
-		  this.cartProducts.forEach(function(prod, index, prods){
-			total += prod.special * prod.purchaseQuantity;
-		  });
-	  }
+      if (this.cartProducts.length>0) {
+        this.cartProducts.forEach(function (prod, index, prods) {
+          total += prod.special * prod.purchaseQuantity;
+        });
+      }
 
       return formatTotal(total);
     };
 
-	 this.getProductQty = function(product) {
+    this.getProductQty = function (product) {
       var qty = 0;
-      this.cartProducts.forEach(function(prod, index, prods){
-		  if (prod.id === product.id) {
-			 qty = prod.purchaseQuantity;
-		  }
+      this.cartProducts.forEach(function (prod, index, prods) {
+        if (prod.id === product.id) {
+          qty = prod.purchaseQuantity;
+        }
       });
 
       return qty;
     };
 
-    var formatTotal = function(total) {
+    var formatTotal = function (total) {
       return total.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
     };
 
 
-    this.updateTotal = function(){
+    this.updateTotal = function () {
       this.total = this.cartTotal();
     }.bind(this);
 
     this.updateTotal();
 
-    this.getProducts = function(callback){
+    this.getProducts = function (callback) {
       $http.get('/admin/panel/products')
-      .success(function(products){
+      .success(function (products) {
         this.galleryProducts = products;
         if (callback) {callback();}
       }.bind(this));
@@ -107,32 +107,27 @@
 
   }]);
 
-  
-
-  
 })(angular);
 
-
-
-(function(angular) {
+(function (angular) {
   
   //IONIC CART DIRECTIVE
   var app = angular.module('ionicShop.directives', ['ionic', 'ionicShop.services']);
 
-  app.directive('ionCart',['Products','$templateCache', function(Products, $templateCache){
-    var link = function(scope, element, attr) {
-      scope.$watch('products.length', function(newVal, oldVal){
+  app.directive('ionCart',['Products', '$templateCache', function (Products, $templateCache) {
+    var link = function (scope, element, attr) {
+      scope.$watch('products.length', function (newVal, oldVal){
         Products.updateTotal();
         scope.emptyProducts = newVal > 0 ? false : true; 
       });
 
       scope.emptyProducts = scope.products.length ? false : true;
 
-      scope.addProduct = function(product) {
+      scope.addProduct = function (product) {
         Products.addOneProduct(product);
       };
 
-      scope.removeProduct = function(product){
+      scope.removeProduct = function (product) {
           product.purchaseQuantity <= 1 ? Products.removeProduct(product) : Products.removeOneProduct(product);
       };
     };
@@ -150,21 +145,21 @@
 
 
   // IONIC CHECKOUT DIRECTIVE
-  app.directive('ionCartFooter',['$state', '$templateCache', function($state, $templateCache){
-    var link = function(scope, element, attr) {
+  app.directive('ionCartFooter',['$state', '$templateCache', function ($state, $templateCache){
+    var link = function (scope, element, attr) {
 
       element.addClass('bar bar-footer bar-dark');
-      element.on('click', function(e){
+      element.on('click', function (e){
         if (scope.path) {
           $state.go(scope.path);
         }
       });
 
-      element.on('touchstart', function(){
+      element.on('touchstart', function (){
         element.css({opacity: 0.8});
       });
 
-      element.on('touchend', function(){
+      element.on('touchend', function (){
         element.css({opacity: 1});
       });
     };
@@ -180,11 +175,11 @@
   }]);
 
   // IONIC PURCHASE DIRECTIVE
-  app.directive('ionCheckout',['Products','$templateCache', function(Products, $templateCache){
-    var link = function(scope, element, attr) {
-      scope.$watch(function(){
+  app.directive('ionCheckout',['Products','$templateCache', function (Products, $templateCache) {
+    var link = function (scope, element, attr) {
+      scope.$watch(function () {
         return Products.total;
-      }, function(){
+      }, function () {
         scope.total = Products.total;
       });
 
@@ -209,17 +204,16 @@
     };
   }]);
 
-
   //IONIC PURCHASE FOOTER DIRECTIVE
-  app.directive('ionCheckoutFooter',['$compile', 'Products', 'stripeCheckout', 'CheckoutValidation','$templateCache', function($compile, Products, stripeCheckout, CheckoutValidation, $templateCache){
-    var link = function(scope, element, attr) {
+  app.directive('ionCheckoutFooter',['$compile', 'Products', 'stripeCheckout', 'CheckoutValidation','$templateCache', function ($compile, Products, stripeCheckout, CheckoutValidation, $templateCache) {
+    var link = function (scope, element, attr) {
       scope.checkout = Products.checkout;
       scope.processCheckout = stripeCheckout.processCheckout;
       scope.stripeCallback = stripeCheckout.stripeCallback;
 
       element.addClass('bar bar-footer bar-dark');
 
-      element.on('click', function(){
+      element.on('click', function () {
         if (CheckoutValidation.checkAll(scope.checkout)) {
           scope.processCheckout(scope.checkout, scope.stripeCallback);
         } else {
@@ -228,11 +222,11 @@
         }
       });
 
-      element.on('touchstart', function(){
+      element.on('touchstart', function () {
         element.css({opacity: 0.8});
       });
 
-      element.on('touchend', function(){
+      element.on('touchend', function () {
         element.css({opacity: 1});
       });
     };
@@ -246,15 +240,14 @@
 
 
 //-------------------------------------
-app.directive('addToCartButton', function() {
+app.directive('addToCartButton', function () {
 
 
   function link(scope, element, attributes) {
-    element.on('click', function(event){
+    element.on('click', function (event) {
       var cartElem = angular.element(document.getElementsByClassName("shopping-cart"));
      
       var offsetTopCart = cartElem.prop('offsetTop');
-	  
 
       var offsetLeftCart = cartElem.prop('offsetLeft');
       var widthCart = cartElem.prop('offsetWidth');
@@ -274,7 +267,7 @@ app.directive('addToCartButton', function() {
       imgClone.css({
         'height': '150px',
         'position': 'absolute',
-		'bottom':'0px',
+        'bottom':'0px',
           'right': '0px',
         'top': offsetTop + 'px',
         'left': offsetLeft + 'px',
