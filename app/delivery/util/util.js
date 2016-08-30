@@ -1,4 +1,5 @@
 'use strict';
+/*eslint-disable no-unused-vars */
 function findCategory (results, findId) {
   for (var i = 0; i < results.length; i++) {
     if (results[i].category_id === findId) {
@@ -64,6 +65,7 @@ function getSelectedFilter (data, seletedArray, ftype) {
   });
   return data;
 }
+
 function toObject (arr) {
   var rv = {};
   for (var i = 0; i < arr.length; ++i) {

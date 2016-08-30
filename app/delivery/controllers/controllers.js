@@ -1,3 +1,4 @@
+'use strict';
 angular.module('delivery.controllers', ['ionic', 'ngCordova', 'ionic-datepicker'])
 
 .controller('AppCtrl', function ($scope, $rootScope, $filter, $state, $location, usersService, $ionicModal, $cordovaDialogs, $cordovaPush, $ionicSideMenuDelegate, categoryService, dashboardService, ionicMaterialInk) {
@@ -13,14 +14,16 @@ angular.module('delivery.controllers', ['ionic', 'ngCordova', 'ionic-datepicker'
   });
 }*/
 //---------------------
-  $scope.popularSearch = [{heading:'Popular Search', items:[{id:0, title:'Dal'}, {id:0, title:'Rice'}, {id:0, title:'Maggi'}, {id:0, title:'Atta'}, {id:0, title:'Desi Ghee'}]}];
+  $scope.popularSearch = [{heading: 'Popular Search', items: [{id: 0, title: 'Dal'}, {id: 0, title: 'Rice'}, {id: 0, title: 'Maggi'}, {id: 0, title: 'Atta'}, {id: 0, title: 'Desi Ghee'}]}];
 
   $scope.getSearchResult = function (keywords) {
     $scope.searchCats = $filter('filter')($scope.searchDefaultCats, { title: keywords });
     if ($scope.searchCats === '') {$scope.searchCats = '';}
-  }
-  $scope.resetSearch = function (keywords) { $scope.searchCats = '';}
-  $scope.searchProduct = function (cat_id,title) {$location.path('app/search/' + cat_id + '/' + title.replace('&amp;', 'and'));}
+  };
+
+/*eslint-disable no-unused-vars */
+  $scope.resetSearch = function (keywords) { $scope.searchCats = '';};
+  $scope.searchProduct = function (catId, title) {$location.path('app/search/' + catId + '/' + title.replace('&amp;', 'and'));};
 //---------------------
 
 
@@ -42,11 +45,11 @@ angular.module('delivery.controllers', ['ionic', 'ngCordova', 'ionic-datepicker'
     menuLink: '#/app/products' //Adding code or text before all the topContent if present on item
   };
 //$scope.searchProduct = function(){ $state.go('app.search'); }
-  $scope.viewCart = function () {$state.go('app.shopping-cart'); }
+  $scope.viewCart = function () {$state.go('app.shopping-cart'); };
 
   $scope.toggleLeftSideMenu = function () {$ionicSideMenuDelegate.toggleLeft();  };
 
-  $scope.logout = function () { 
+  $scope.logout = function () {
     usersService.userLogout()
       .then(function (response) {
         if (response.data.success) {
@@ -55,18 +58,18 @@ angular.module('delivery.controllers', ['ionic', 'ngCordova', 'ionic-datepicker'
         }
       }, function (error) {
         $rootScope.tostMsg(error);
-        $location.path('app/iniscreen'); 
+        $location.path('app/iniscreen');
       });
   };
 
   $ionicModal.fromTemplateUrl('delivery/templates/products/products-search.html', {scope: $scope})
   .then(function (modal) {$scope.searchModal = modal; });
-    $scope.searchClose = function () {
-      $scope.searchModal.hide();
-    };
-    $scope.searchShow = function () { 
-      $scope.searchModal.show(); 
-    };
+  $scope.searchClose = function () {
+    $scope.searchModal.hide();
+  };
+  $scope.searchShow = function () {
+    $scope.searchModal.show();
+  };
 
   ionicMaterialInk.displayEffect();
 });

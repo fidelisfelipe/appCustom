@@ -1,7 +1,9 @@
-'use strict'
+'use strict';
+/*eslint-disable no-unused-vars */
+/*eslint-disable camelcase */
+/*eslint-disable no-redeclare */
 angular.module('delivery.controllers')
-.controller('CartCtrl', function ($scope, $rootScope, $ionicLoading, alertmsgService, $location, eCart, ionicMaterialInk) 
-{
+.controller('CartCtrl', function ($scope, $rootScope, $ionicLoading, alertmsgService, $location, eCart, ionicMaterialInk) {
   $rootScope.cartRefresh  = function () {
     $scope.cartProducts = eCart.cartProducts;
     $rootScope.cartTotal = eCart.cartTotal();
@@ -10,7 +12,7 @@ angular.module('delivery.controllers')
     } else {
       $rootScope.cartItems = '';
     }
-  }
+  };
 
   $rootScope.cartRefresh();
 
@@ -24,7 +26,7 @@ angular.module('delivery.controllers')
       var newqty = parseInt(prodObj.purchaseQuantity);
     }
 
-    if (newqty>0) {
+    if (newqty > 0) {
 
       if (eCart.isAvailable) {
         $rootScope.cartRefresh();
@@ -40,48 +42,45 @@ angular.module('delivery.controllers')
 }else{
   $scope.removeProduct(prodObj);
 }*/
-}
+  };
 //----------Remove Item---------------------------------
-  $scope.removeProduct= function (prodObj ){
+  $scope.removeProduct = function (prodObj ) {
     eCart.removeProduct(prodObj);
     $rootScope.cartRefresh();
-  }
+  };
 //--------------------------------------------
-  $scope.deliveryAddress= function () { $location.path("app/delivery-address"); }
+  $scope.deliveryAddress = function () { $location.path('app/delivery-address'); };
 
   ionicMaterialInk.displayEffect();
 })
-
 .controller('CartDeliveryCtrl', function ($scope, $http, $rootScope, $ionicModal, $location, usersService, alertmsgService, eCart, ionicMaterialInk) {
-'use strict';
-  
   //------------------------------------
   //$rootScope.billingAddress = '';
   //$rootScope.shipingAddress = '';
   $scope.getBillShipAddress = function () {
     $http.get('data/delivery/product/paymentaddress.json').then(function (response) {
       if (response.data.success) {
-        $scope.billAddresses= response.data.data.addresses;
-        $scope.shipAddresses= response.data.data.addresses;
+        $scope.billAddresses = response.data.data.addresses;
+        $scope.shipAddresses = response.data.data.addresses;
       } else {
         $scope.billAddresses = [];
         $scope.shipAddresses = [];
       }
     },
     function (error) {
-      $rootScope.tostMsg(error); 
+      $rootScope.tostMsg(error);
     });
 
-  }
+  };
 
   $scope.getBillShipAddress();
 //------------Address Modal----------------------
   $ionicModal.fromTemplateUrl('delivery/templates/cart/add-address.html', { scope: $scope })
-  .then(function(modal) { $scope.addressModal = modal; });
+  .then(function (modal) { $scope.addressModal = modal; });
   $scope.AddressClose = function () { $scope.addressModal.hide(); };
-  $scope.addAddress = function () { 
+  $scope.addAddress = function () {
 
-    $scope.cuntryData = [{country_id:'', name:'-- Select Country --'},{country_id:'99', name:'India'}];
+    $scope.cuntryData = [{countryId: '', name: '-- Select Country --'}, {countryId: '99', name: 'India'}];
     usersService.getCountries()
     .then(function (response) {
       if (response.success) {
@@ -89,90 +88,81 @@ angular.module('delivery.controllers')
       }
     });
 
-    $scope.billshipAddress = {firstname:'', lastname:'', country_id:'', address_1:'', city:'', postcode:'', zone_id:'1433'}; 
+    $scope.billshipAddress = {firstname: '', lastname: '', countryId: '', address_1: '', city: '', postcode: '', zone_id: '1433'};
 
     $scope.addressModal.show();
   };
 //-----------Add Billing Address-----------------------
   $scope.saveAddress = function (form) {
     if (form.$valid) { $scope.saveBillingAddress($scope.billshipAddress); }
-  }
+  };
 
-  $scope.saveBillingAddress = function (data,stype) {
+  $scope.saveBillingAddress = function (data, stype) {
     $scope.billAddresses.push(data);
     $scope.addressModal.hide();
-  }
+  };
 
-  $scope.saveShippingAddress = function (data,stype) {
+  $scope.saveShippingAddress = function (data, stype) {
     $scope.shipAddresses.push(data);
     $scope.addressModal.hide();
-  }
+  };
   //----------------------------------
   if (typeof($rootScope.billingAddress) === 'undefined') {$rootScope.billingAddress = '';}
-  $scope.selectBillAddress = function (value) { 
+  $scope.selectBillAddress = function (value) {
 
-  $rootScope.billingAddress = value;
-    var tmpdata = {payment_address:"existing",address_id:value}
+    $rootScope.billingAddress = value;
+    var tmpdata = {payment_address: 'existing', address_id: value};
     //$scope.saveBillingAddress(tmpdata,'set');
   };
 
   //----------------------------------
   if (typeof($rootScope.shippingAddress) === 'undefined') {$rootScope.shippingAddress = '';}
-  $scope.selectShipAddress = function (value) { 
+  $scope.selectShipAddress = function (value) {
 
     $rootScope.shippingAddress = value;
-    var tmpdata = {shipping_address:"existing",address_id:value}
+    var tmpdata = {shipping_address: 'existing', address_id: value};
     //$scope.saveShippingAddress(tmpdata,'set');
   };
 //----------------------------------
-  $scope.deliveryOptions= function () { 
+  $scope.deliveryOptions = function () {
 
     if ($rootScope.billingAddress === '' && $rootScope.shippingAddress === '') {
       alertmsgService.showMessage('Select Billing and Shipping Address.');
-    } else if ($rootScope.billingAddress != '' && $rootScope.shippingAddress === '') {
+    } else if ($rootScope.billingAddress !== '' && $rootScope.shippingAddress === '') {
       alertmsgService.showMessage('Select Shipping Address.');
-    } else if ($rootScope.billingAddress === '' && $rootScope.shippingAddress!='') {
+    } else if ($rootScope.billingAddress === '' && $rootScope.shippingAddress !== '') {
       alertmsgService.showMessage('Select Billing Address.');
     } else {
-      $location.path("app/delivery-options");
+      $location.path('app/delivery-options');
     }
-
-  }
-
+  };
 //----------------------------------
-  
   ionicMaterialInk.displayEffect();
 })
-
-.controller('CartOptionsCtrl', function($scope, $http, $rootScope, ionicDatePicker, $ionicModal, $location, eCart, alertmsgService, ionicMaterialInk) {
-'use strict';
-
-  $scope.placeOrder= function () {
-    
-    if ($rootScope.shppingMethod!='') {
-      $location.path("app/place-order");
+.controller('CartOptionsCtrl', function ($scope, $http, $rootScope, ionicDatePicker, $ionicModal, $location, eCart, alertmsgService, ionicMaterialInk) {
+  $scope.placeOrder = function () {
+    if ($rootScope.shppingMethod !== '') {
+      $location.path('app/place-order');
     } else {
-      alertmsgService.showMessage("Select shipping method first to proceed.");
+      alertmsgService.showMessage('Select shipping method first to proceed.');
     }
 
+  };
 
-  }
-
-
-  $http.get("data/delivery/product/cart/shippingmethods.json")
+  $http.get('data/delivery/product/cart/shippingmethods.json')
   .then(function (response) {
     $scope.shippingData = response.data.shipping_methods;
   });
 
-  if (typeof($rootScope.shppingMethod)=='undefined') {$rootScope.shppingMethod = '';}
+  if (typeof($rootScope.shppingMethod) === 'undefined') {$rootScope.shppingMethod = '';}
   $scope.selectShipMethod = function (data) {
     $rootScope.shppingMethod = data.code;
     $rootScope.shppingMethodData = data;
-  }
+  };
   //-------------DatePicker---------------------
   var cdate = new Date();
   var nextMonth = cdate.getMonth() + 1;
-  var monthEnd = new Date(cdate.getFullYear(), nextMonth+1, 0).getDate();
+  var monthEnd = new Date(cdate.getFullYear(), nextMonth + 1, 0).getDate();
 
   $scope.currntDate = cdate.getDate() + '-' + (cdate.getMonth() + 1) + '-' + cdate.getFullYear();
 
@@ -182,26 +172,24 @@ angular.module('delivery.controllers')
       $scope.currntDate = sDate.getDate() + '-' + (sDate.getMonth() + 1) + '-' + sDate.getFullYear();
     },
     disabledDates: [//Optional
-      new Date("04-22-2016"),
-      new Date("08-16-2016"),
+      new Date('04-22-2016'),
+      new Date('08-16-2016'),
       new Date(1439676000000)
     ],
     from: new Date(), //Optional
-    to: new Date(cdate.getFullYear(), nextMonth, monthEnd),//Optional
-    inputDate: new Date(),      //Optional
-    mondayFirst: true,          //Optional
-    disableWeekdays: [0],       //Optional
-    closeOnSelect: true,       //Optional
-    templateType: 'popup'       //Optional
-
+    to: new Date(cdate.getFullYear(), nextMonth, monthEnd), //Optional
+    inputDate: new Date(), //Optional
+    mondayFirst: true, //Optional
+    disableWeekdays: [0], //Optional
+    closeOnSelect: true, //Optional
+    templateType: 'popup'//Optional
+  };
   $scope.openDatePicker = function () {ionicDatePicker.openDatePicker(ipObj1);};
 //----------------------------------
 
   ionicMaterialInk.displayEffect();
 })
-
-.controller('CartOrderCtrl', function($scope, $http, eCart, $rootScope, $ionicModal, $location, $interval, alertmsgService, $cordovaInAppBrowser, ionicMaterialInk) {
-'use strict';
+.controller('CartOrderCtrl', function ($scope, $http, eCart, $rootScope, $ionicModal, $location, $interval, alertmsgService, $cordovaInAppBrowser, ionicMaterialInk) {
 
   $scope.subTotal = $rootScope.cartTotal;
   $scope.grossTotal = parseInt($rootScope.cartTotal) + parseInt($rootScope.shppingMethodData.cost);
@@ -213,38 +201,36 @@ angular.module('delivery.controllers')
 
   });
   //----------------------------------------
-  $scope.discountData = {coupon:''}; 
+  $scope.discountData = {coupon: ''};
   $scope.getCouponDiscount = function (form) {
-    alertmsgService.showMessage("Invalid Coupon Code");
-  }
+    alertmsgService.showMessage('Invalid Coupon Code');
+  };
 //------------Select Payment method----------------------------
   if (typeof($rootScope.paymentMethod) === 'undefined') {$rootScope.paymentMethod = '';}
   $scope.selectPaymentMethod = function (obj) {
 
-    var paymentdata = {payment_method:obj.code,agree:"1",comment: obj.title}
+    var paymentdata = {payment_method: obj.code, agree: '1', comment: obj.title};
     $rootScope.paymentMethod = obj.code;
 
-  }
+  };
 //----------------------------------------
   $scope.orderConfirm = function () {
     if ($rootScope.paymentMethod === '') {
-      alertmsgService.showMessage("Please Select Payment Method.");
+      alertmsgService.showMessage('Please Select Payment Method.');
     } else {
-      eCart.cartProducts=[];
-      $rootScope.cartTotal='';
-      $rootScope.cartItems='';
+      eCart.cartProducts = [];
+      $rootScope.cartTotal = '';
+      $rootScope.cartItems = '';
       $rootScope.paymentMethod = '';
-      $rootScope.shppingMethod ='';
-      $rootScope.billingAddress ='';
-      $rootScope.shippingAddress ='';
-      $location.path("app/order-status/1");
+      $rootScope.shppingMethod = '';
+      $rootScope.billingAddress = '';
+      $rootScope.shippingAddress = '';
+      $location.path('app/order-status/1');
     }
-  }
+  };
 //-----------------------------------------
 })
-
 .controller('CartOrderStatusCtrl', function ($scope, $stateParams, ionicMaterialInk) {
-'use strict';
-$scope.order_fstatus = $stateParams.status_id;
+  $scope.order_fstatus = $stateParams.status_id;
   ionicMaterialInk.displayEffect();
 });

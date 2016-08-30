@@ -1,7 +1,7 @@
 'use strict';
 angular.module('delivery.services')
 .factory('progressService', function ($ionicLoading) {
-
+/*eslint-disable no-unused-vars */
   //-----------------------------------------------
   //Show and hide progress indicator for loading actions
 

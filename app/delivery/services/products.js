@@ -1,7 +1,16 @@
 'use strict';
+function toObject (arr) {
+  var rv = {};
+  for (var i = 0; i < arr.length; ++i) {
+    rv[i] = arr[i];
+  }
+  return rv;
+}
+
 angular.module('delivery.services')
 .factory('productsService', function ($rootScope, $http) {
   var service = {
+/*eslint-disable no-unused-vars */
     getProducts: function (catid, title, paged) {
 
 /*RewriteRule ^api/rest/products/category/?([0-9]+)/limit/?([0-9]+)/page/?([0-9]+)/order/?([a-zA-Z]+)/sort/?([a-zA-Z]+)/filtersdata/?([0-9,-|]+)  [L]*/
@@ -29,36 +38,36 @@ angular.module('delivery.services')
   var showloader = 'Y'; if(paged>1)showloader = 'N';*/
       return $http.get('data/delivery/product/products1-5-1-ASC-name.json');
     },
-    getProductDetail: function (pro_id) {
+    getProductDetail: function (prodId) {
       return $http.get('data/delivery/product/detail.json');
     },
-    getFilterOptions: function (cat_id) {
+    getFilterOptions: function (catId) {
       return $http.get('data/delivery/product/filter.json');
     },
-    setFilterData: function (cat_id, ftype, arrayval) {
+    setFilterData: function (catId, ftype, arrayval) {
       if (typeof($rootScope.brandsFobj) === 'undefined') {$rootScope.brandsFobj = [];}
       if (typeof($rootScope.priceFobj) === 'undefined') {$rootScope.priceFobj = [];}
       if (typeof($rootScope.discFobj) === 'undefined') {$rootScope.discFobj = [];}
 
       if (arrayval !== '' && typeof(arrayval) !== 'undefined') {
-        if (ftype === 'brands') {$rootScope.brandsFobj[cat_id] = toObject(arrayval);}
-        if (ftype === 'price') {$rootScope.priceFobj[cat_id] = toObject(arrayval);}
-        if (ftype === 'discount') {$rootScope.discFobj[cat_id] = toObject(arrayval);}
+        if (ftype === 'brands') {$rootScope.brandsFobj[catId] = toObject(arrayval);}
+        if (ftype === 'price') {$rootScope.priceFobj[catId] = toObject(arrayval);}
+        if (ftype === 'discount') {$rootScope.discFobj[catId] = toObject(arrayval);}
       } else {
-        if (ftype === 'brands') {$rootScope.brandsFobj[cat_id] = {};}
-        if (ftype === 'price') {$rootScope.priceFobj[cat_id] = {};}
-        if (ftype === 'discount') {$rootScope.discFobj[cat_id] = {};}
+        if (ftype === 'brands') {$rootScope.brandsFobj[catId] = {};}
+        if (ftype === 'price') {$rootScope.priceFobj[catId] = {};}
+        if (ftype === 'discount') {$rootScope.discFobj[catId] = {};}
       }
     },
-    getFilterData: function (cat_id, ftype) {
+    getFilterData: function (catId, ftype) {
       if (typeof($rootScope.brandsFobj) === 'undefined') {$rootScope.brandsFobj = [];}
       if (typeof($rootScope.priceFobj) === 'undefined') {$rootScope.priceFobj = [];}
       if (typeof($rootScope.discFobj) === 'undefined') {$rootScope.discFobj = [];}
 
       var tval = '';
-      if (ftype === 'brands') {tval = $rootScope.brandsFobj[cat_id];}
-      if (ftype === 'price') {tval = $rootScope.priceFobj[cat_id];}
-      if (ftype === 'discount') {tval = $rootScope.discFobj[cat_id];}
+      if (ftype === 'brands') {tval = $rootScope.brandsFobj[catId];}
+      if (ftype === 'price') {tval = $rootScope.priceFobj[catId];}
+      if (ftype === 'discount') {tval = $rootScope.discFobj[catId];}
 
       if (typeof(tval) === 'undefined') {
         return '';

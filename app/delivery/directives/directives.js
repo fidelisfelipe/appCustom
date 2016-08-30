@@ -1,6 +1,6 @@
 'use strict';
 angular.module('delivery.directives', [])
-
+/*eslint-disable no-unused-vars */
 /*=============Master===============================*/
 .directive('masterBox', function () {
   return {

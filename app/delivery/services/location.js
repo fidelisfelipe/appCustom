@@ -1,7 +1,10 @@
 'use strict';
+
 angular.module('delivery.services')
 .service('LocationService', function ($q) {
+/*eslint-disable no-undef */
   var autocompleteService = new google.maps.places.AutocompleteService();
+
   var detailsService = new google.maps.places.PlacesService(document.createElement('input'));
   return {
     searchAddress: function (input) {
@@ -10,6 +13,7 @@ angular.module('delivery.services')
       autocompleteService.getPlacePredictions({
         input: input
       }, function (result, status) {
+
         if (status === google.maps.places.PlacesServiceStatus.OK) {
           deferred.resolve(result);
         } else {
@@ -36,6 +40,7 @@ angular.module('delivery.services')
       location: '='
     },
     restrict: 'E',
+/*eslint-disable no-unused-vars */
     controller: function ($scope, $rootScope, $timeout) {
       var utils = this;
       $scope.btnLocClose = false;

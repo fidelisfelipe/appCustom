@@ -1,4 +1,7 @@
 'use strict';
+/*eslint-disable no-unused-vars */
+/*eslint-disable no-use-before-define */
+/*eslint-disable no-undef */
 var slidingTabsDirective = angular.module('ionic').directive('ionSlideTabs', ['$timeout', '$compile', '$interval', '$ionicSlideBoxDelegate', '$ionicScrollDelegate', '$ionicGesture', function ($timeout, $compile, $interval, $ionicSlideBoxDelegate, $ionicScrollDelegate, $ionicGesture) {
   return {
     require: '^ionSlideBox',
@@ -116,6 +119,7 @@ var slidingTabsDirective = angular.module('ionic').directive('ionSlideTabs', ['$
         if (selectFirst) {
           var targetSlideIndex = 0;
         } else {
+          /*eslint-disable no-redeclare */
           var targetSlideIndex = ionicSlideBoxDelegate.currentIndex();
         }
         var targetTab = angular.element(slideTabs[targetSlideIndex]);
