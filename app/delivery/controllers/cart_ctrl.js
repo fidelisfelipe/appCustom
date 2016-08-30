@@ -59,7 +59,7 @@ angular.module('delivery.controllers')
   //$rootScope.billingAddress = '';
   //$rootScope.shipingAddress = '';
   $scope.getBillShipAddress = function () {
-    $http.get("data/delivery/product/paymentaddress.json").then(function (response) {
+    $http.get('data/delivery/product/paymentaddress.json').then(function (response) {
       if (response.data.success) {
         $scope.billAddresses= response.data.data.addresses;
         $scope.shipAddresses= response.data.data.addresses;
