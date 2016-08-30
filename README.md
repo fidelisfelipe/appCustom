@@ -9,6 +9,7 @@ This project was generated with Generator-M-Ionic v1.7.0. For more info visit th
 ## create dev features
 ###yo m-ionic:pair feature module//create ctrl end html pair
 ###yo m-ionic:module //create new module
+###start project: git clone, npm install, npm ionic@1.7.16, npm instal yo, ionic add platform android, gulp watch
 ### What's in the box
 
 <p align="center">

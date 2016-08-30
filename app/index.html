@@ -7,6 +7,7 @@
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
     <!-- custom meta tags -->
     <meta name="format-detection" content="telephone=no"> <!-- no auto telephone linking -->
+	<meta http-equiv="Content-Security-Policy" content="default-src *; script-src 'self' 'unsafe-inline' 'unsafe-eval' *; style-src  'self' 'unsafe-inline' *">
 
     <meta name="apple-mobile-web-app-capable" content="yes"> <!-- can be saved to home screen on ios -->
     <title>{{title}}</title>
@@ -83,9 +84,6 @@
     <script src="main/main.js"></script>
     <script src="main/constants/config-const.js"></script>
     <script src="delivery/util/util.js"></script>
-    <script src="delivery/util/angular-messages.min.js"></script>
-    <script src="delivery/controllers/controllers.js"></script>
-    <script src="delivery/templates/cart/cart_ctrl.js"></script>
     <script src="delivery/services/index.js"></script>
     <script src="delivery/services/users.js"></script>
     <script src="delivery/services/products.js"></script>
@@ -96,13 +94,13 @@
     <script src="delivery/directives/slidingTabsDirective.js"></script>
     <script src="delivery/directives/directives.js"></script>
     <script src="delivery/delivery.js"></script>
+    <script src="delivery/controllers/controllers.js"></script>
     <script src="delivery/controllers/profile_ctrl.js"></script>
     <script src="delivery/controllers/products_ctrl.js"></script>
     <script src="delivery/controllers/orders_ctrl.js"></script>
     <script src="delivery/controllers/iniscreen_ctrl.js"></script>
     <script src="delivery/controllers/dashboard_ctrl.js"></script>
     <script src="delivery/controllers/connection_ctrl.js"></script>
-    <script src="delivery/controllers/cart_ctrl.js"></script>
     <script src="delivery/cart.js"></script>
     <script src="app.js"></script>
     <!-- endinject -->

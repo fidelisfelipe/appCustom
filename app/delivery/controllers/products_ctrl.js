@@ -153,9 +153,6 @@ angular.module('delivery.controllers')
   $location.path('app/products/' + $scope.cat_id);
   }
   //-----------------------
-
-
-
 })
 
 .controller('ProductsDetailCtrl', function ($scope, $rootScope, $stateParams, $timeout, eCart, productsService, ionicMaterialInk) {
@@ -170,13 +167,12 @@ angular.module('delivery.controllers')
   });
 
   //-------------------------------
-   $scope.selectId='';
-   $scope.AddToCart = function (prodObj) {   
-   $scope.selectId=prodObj.id;
-   $timeout(function () {$scope.selectId='';  }, 700);
-
-   eCart.addToCart(prodObj); 
-   $rootScope.cartItems = eCart.cartProducts.length;
+  $scope.selectId= '';
+  $scope.AddToCart = function (prodObj) {   
+    $scope.selectId=prodObj.id;
+    $timeout(function () {$scope.selectId='';  }, 700);
+    eCart.addToCart(prodObj); 
+    $rootScope.cartItems = eCart.cartProducts.length;
   }
   //-------------------------------
 
