@@ -3,5 +3,5 @@ node_js:
   - 'stable'
   - '0.12'
   - '5.11.1'
-install: npm install
+install: npm install --no-optional
 script: gulp build

@@ -7,6 +7,7 @@ angular.module('delivery.controllers')
     .then(function (response) {
       $rootScope.accordionArray = response.data.data;
        /*eslint-disable no-undef */
+
       $rootScope.searchDefaultCats = getAutoSuggest($rootScope.accordionArray);
     }, function (error) {
       $rootScope.tostMsg(error);
