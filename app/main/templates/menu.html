@@ -1,62 +1,32 @@
 <ion-side-menus enable-menu-with-back-views="false">
-
-  <!-- CONTENT -->
   <ion-side-menu-content>
-
-    <!-- header bar -->
-    <!-- the nav bar will be updated as we navigate between views -->
-    <ion-nav-bar class="bar-positive">
-      <!-- back button, shown if applicable -->
+    <ion-nav-bar class="bar-stable">
       <ion-nav-back-button>
       </ion-nav-back-button>
-      <!-- nav button, shown if applicable -->
-      <ion-nav-buttons side="left" >
+
+      <ion-nav-buttons side="left">
         <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
         </button>
       </ion-nav-buttons>
-	  <ion-nav-buttons side="right" >
-	    <button class="button button-icon button-clear ion-power" ng-click="ctrl.signOut()" ng-show="ctrl.currentUser.isAuthorized">
-		</button>
-	  </ion-nav-buttons>
-
     </ion-nav-bar>
-
-    <!-- ROUTING INJECTED HERE: pageContent -->
-    <ion-nav-view name="pageContent"></ion-nav-view>
-
+	   <button ng-click="viewCart();" ng-if="isCartIconVisible" class="button cart-button button-fab button-fab-bottom-right">
+			<div class="cartIcon">{{cartItems}}</div>
+       </button>
+    <ion-nav-view name="menuContent"></ion-nav-view>
   </ion-side-menu-content>
 
-  <!-- SIDEMENU -->
   <ion-side-menu side="left">
-
-    <!-- menu header -->
-    <ion-header-bar class="bar-positive">
-      <h1 class="title">{{title}}</h1>
+    <ion-header-bar class="expanded">
+       <img ng-src="img/default-avatar.png"  class="avatar motion spin fade"  > 
+	   <div class="menu-bottom">sales@opensorucetechnologies.com</div>
     </ion-header-bar>
-
-    <!-- menu content -->
-    <ion-content>
-	   <ion-list ng-show="ctrl.currentUser.isAuthorized">
-	       	  <div class="item item-avatar">
-			    <img ng-src="{{ctrl.currentUser.srcImg}}" /> 
-			    <h2>{{ctrl.currentUser.firstName}} {{ctrl.currentUser.lastName}}</h2>
-			    <p>
-				
-				{{ctrl.currentUser.username}} <br>{{ctrl.currentUser.isAdmin ? 'Hi Dev :)' : ''}} <br>
-				
-           </a>
-				</p>
-			</button>
-			  </div>
-
-	   </ion-list>
-      <ion-list >
-        <ion-item ng-repeat="menu in menus" menu-close ui-sref="{{menu.name}}" >
-          {{menu.title}}
-        </ion-item>
+    <ion-content class="has-expanded-header">
+      <ion-list>
+        <ion-item menu-close href="#/app/dashboard"><i class="ion-ios-home"><span>Home</span></i></ion-item>
       </ion-list>
+	  
+	  <div sir-accordion collection="accordionArray" config="accordionConfig"></div>
+
     </ion-content>
-
   </ion-side-menu>
-
 </ion-side-menus>

@@ -20,5 +20,17 @@ $ionicons-font-path: "../assets/fonts" !default;
 
 // Include all of Ionic
 @import "../../bower_components/ionic/scss/ionic";
-
+/*----------------------------------------*/
+@import "scss/variables";
+@import "scss/common";
+@import "scss/nav";
+@import "scss/cat-list";
+@import "scss/slidingTabs";
+@import "scss/pages/connection";
+@import "scss/pages/iniscreen";
+@import "scss/pages/dashboard";
+@import "scss/pages/registration";
+@import "scss/pages/profile";
+@import "scss/pages/products";
+@import "scss/pages/cart";
 

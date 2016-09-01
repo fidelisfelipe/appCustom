@@ -1,19 +1,16 @@
-<!doctype html>
-<html ng-app="app">
+<!DOCTYPE html>
+<html>
   <head>
     <meta charset="utf-8">
-    <meta name="description" content="">
-    <!-- ionic meta tags -->
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
-    <!-- custom meta tags -->
-    <meta name="format-detection" content="telephone=no"> <!-- no auto telephone linking -->
-
-    <meta name="apple-mobile-web-app-capable" content="yes"> <!-- can be saved to home screen on ios -->
-    <title>{{title}}</title>
-    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <title></title>
 
     <!-- build:css styles/vendor.css -->
     <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/waves/dist/waves.min.css" />
+    <link rel="stylesheet" href="bower_components/ionic-material/dist/ionic.material.css" />
+    <link rel="stylesheet" href="bower_components/ionic-material/dist/ionic.material.min.css" />
+    <link rel="stylesheet" href="bower_components/sir-accordion/dist/styles/sir-accordion.css" />
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -24,22 +21,15 @@
     <link rel="stylesheet" href="main/styles/upload.css">
     <!-- endinject -->
     <!-- endbuild -->
-  </head>
-  <body >
-
-    <!-- the nav bar will be updated as we navigate between views -->
-    <!-- <ion-nav-bar> can be removed when using sidemenu (contained in menu.html) -->
-    <ion-nav-bar class="bar-positive">
-      <ion-nav-back-button></ion-nav-back-button>
-    </ion-nav-bar>
-    <!-- the current view will be rendered in the <ion-nav-view> directive -->
-
-    <ion-nav-view></ion-nav-view>
-
-    <!-- will be a 404 during development -->
+    
+	<!-- cordova script (this will be a 404 during development) -->
     <script src="cordova.js"></script>
 
-    <!-- build:js scripts/vendor.js -->
+  </head>
+
+  <body ng-app="app">
+    <ion-nav-view></ion-nav-view>
+	<!-- build:js scripts/vendor.js -->
     <!-- bower:js -->
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-animate/angular-animate.js"></script>
@@ -47,46 +37,62 @@
     <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="bower_components/ionic/release/js/ionic.js"></script>
     <script src="bower_components/ionic/release/js/ionic-angular.js"></script>
-    <script src="bower_components/ngCordova/dist/ng-cordova.js"></script>
     <script src="bower_components/angular-dynamic-locale/src/tmhDynamicLocale.js"></script>
     <script src="bower_components/angular-translate/angular-translate.js"></script>
     <script src="bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.js"></script>
-    <script src="bower_components/angular-messages/angular-messages.js"></script>
     <script src="bower_components/angular-input-masks/angular-input-masks-standalone.js"></script>
     <script src="bower_components/angular-cookies/angular-cookies.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="bower_components/localforage/dist/localforage.js"></script>
     <script src="bower_components/angular-localforage/dist/angular-localForage.js"></script>
     <script src="bower_components/angularbknd-sdk/dist/backand.min.js"></script>
+    <script src="bower_components/ngCordova/dist/ng-cordova.js"></script>
+    <script src="bower_components/waves/dist/waves.min.js"></script>
+    <script src="bower_components/ionic-material/dist/ionic.material.js"></script>
+    <script src="bower_components/ionic-material/dist/ionic.material.min.js"></script>
+    <script src="bower_components/ionic-image-lazy-load/ionic-image-lazy-load.js"></script>
+    <script src="bower_components/ionic-datepicker/dist/ionic-datepicker.bundle.min.js"></script>
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/velocity/velocity.js"></script>
+    <script src="bower_components/velocity/velocity.ui.js"></script>
+    <script src="bower_components/sir-accordion/dist/scripts/sir-accordion.js"></script>
+    <script src="bower_components/angular-messages/angular-messages.js"></script>
+    <script src="bower_components/ngstorage/ngStorage.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
-    
-    <!-- build:js scripts/app.js -->
+	
+	<!-- build:js scripts/app.js -->
     <!-- inject:js -->
-    <script src="main/main.js"></script>
-    <script src="main/services/main-serv.js"></script>
-    <script src="main/services/flash-serv.js"></script>
-    <script src="main/controllers/upload-ctrl.js"></script>
-    <script src="main/controllers/setting-ctrl.js"></script>
-    <script src="main/controllers/search-ctrl.js"></script>
-    <script src="main/controllers/menu-ctrl.js"></script>
-    <script src="main/controllers/list-ctrl.js"></script>
-    <script src="main/controllers/link-ctrl.js"></script>
-    <script src="main/controllers/home-ctrl.js"></script>
-    <script src="main/controllers/facebook-ctrl.js"></script>
-    <script src="main/controllers/debug-ctrl.js"></script>
-    <script src="main/controllers/config-ctrl.js"></script>
-    <script src="main/controllers/account-ctrl.js"></script>
-    <script src="main/constants/config-const.js"></script>
-    <script src="auth-social-backand/auth-social-backand.js"></script>
-    <script src="auth-social-backand/utils/utils.js"></script>
-    <script src="auth-social-backand/services/flash-serv.js"></script>
-    <script src="auth-social-backand/services/auth-social-backand-serv.js"></script>
-    <script src="auth-social-backand/services/api-interceptor-serv.js"></script>
-    <script src="auth-social-backand/controllers/home-ctrl.js"></script>
-    <script src="auth-social-backand/controllers/auth-social-backand-ctrl.js"></script>
-    <script src="app.js"></script>
-    <!-- endinject -->
+	<script src="main/util/util.js"></script>
+	<script src="main/util/cart.js"></script>
+	<script src="main/services/index.js"></script>
+	<script src="main/services/users.js"></script>
+	<script src="main/services/products.js"></script>
+	<script src="main/services/location.js"></script>
+	<script src="main/services/httprequest.js"></script>
+	<script src="main/services/dashboard.js"></script>
+	<script src="main/services/category.js"></script>
+	<script src="main/main.js"></script>
+	<script src="main/directives/slidingTabsDirective.js"></script>
+	<script src="main/directives/directives.js"></script>
+	<script src="main/controllers.js"></script>
+	<script src="main/controllers/profile_ctrl.js"></script>
+	<script src="main/controllers/products_ctrl.js"></script>
+	<script src="main/controllers/orders_ctrl.js"></script>
+	<script src="main/controllers/iniscreen_ctrl.js"></script>
+	<script src="main/controllers/dashboard_ctrl.js"></script>
+	<script src="main/controllers/connection_ctrl.js"></script>
+	<script src="main/controllers/cart_ctrl.js"></script>
+	<script src="main/constants/config-const.js"></script>
+	<script src="auth-social-backand/auth-social-backand.js"></script>
+	<script src="auth-social-backand/utils/utils.js"></script>
+	<script src="auth-social-backand/services/flash-serv.js"></script>
+	<script src="auth-social-backand/services/auth-social-backand-serv.js"></script>
+	<script src="auth-social-backand/services/api-interceptor-serv.js"></script>
+	<script src="auth-social-backand/controllers/home-ctrl.js"></script>
+	<script src="auth-social-backand/controllers/auth-social-backand-ctrl.js"></script>
+	<script src="app.js"></script>
+	<!-- endinject -->
     <!-- endbuild -->
   </body>
 </html>

@@ -1,3 +1,0 @@
-[{
-    "id": 1, "title": "Login", "name": "authSocialBackandLogin",  "show": "!vm.currentUser.isAuthorized", "url": "/auth/social/backand/login", "views": [{"name": "pageContent","cache": false, "templateUrl": "auth-social-backand/templates/login.view.html", "controller": "AuthSocialBackandCtrl as vm"}]
-  }]

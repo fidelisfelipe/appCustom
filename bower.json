@@ -5,20 +5,22 @@
     "angular-animate": "~1.5.0",
     "angular-sanitize": "~1.5.0",
     "angular-ui-router": "~0.2.15",
-    "ngCordova": "~0.1.17-alpha",
     "angular-dynamic-locale": "~0.1.27",
     "angular-translate": "~2.10.0",
     "angular-translate-loader-static-files": "~2.10.0",
-    "angular-messages": "1.5.5",
     "angular-i18n": "^1.5.5",
     "angular-input-masks": "2.3.0",
     "angular-cookies": "^1.5.6",
     "angular-route": "^1.5.6",
     "angular-localforage": "^1.2.5",
-    "angularbknd-sdk": "^1.8.6"
-  },
-  "devDependencies": {
-    "angular-mocks": "~1.5.0"
+    "angularbknd-sdk": "^1.8.6",
+    "ngCordova": "^0.1.27-alpha",
+    "ionic-material": "^0.4.2",
+    "ionic-image-lazy-load": "ion-image-lazy-load#*",
+    "ionic-datepicker": "^1.1.0",
+    "sir-accordion": "^1.2.1",
+    "angular-messages": "^1.5.8",
+    "ngstorage": "^0.3.11"
   },
   "resolutions": {
     "angular": "~1.5.0",
