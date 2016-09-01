@@ -65,7 +65,7 @@ angular.module('starter.controllers', ['ionic', 'ngCordova','ionic-datepicker'])
 			});
 	};
 
-	$ionicModal.fromTemplateUrl('js/products/products-search.html', { scope: $scope })
+	$ionicModal.fromTemplateUrl('main/templates/products/products-search.html', { scope: $scope })
 	.then(function(modal) { $scope.searchModal = modal; });
 	$scope.searchClose = function() { $scope.searchModal.hide(); };
 	$scope.searchShow = function() { 

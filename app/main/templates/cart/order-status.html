@@ -8,20 +8,20 @@
   <ion-content scroll="false" overflow-scroll="true" class="shoppingCart" >
 
 	<div class="emptycart" ng-if="order_fstatus==1">
-			<img ng-src="img/success.png">
+			<img ng-src="main/assets/img/success.png">
 			<p>Your order has been successfuly placed. Our executive will contact you soon regarding this order.</p>
 			<a ng-href="#/app/dashboard" class="button button-balanced">Continue Shopping</a>
 	</div>
 
 	<div class="emptycart" ng-if="order_fstatus==2">
-			<img ng-src="img/fail.png">
+			<img ng-src="main/assets/img/fail.png">
 			<p>Payment process failed. Please try again.</p>
 			<a ng-click="$ionicGoBack()" class="button button-balanced">Try Again</a><br/><br/>
 			<a ng-href="#/app/dashboard" class="button button-balanced">Continue Shopping</a>
 	</div>
 
 	<div class="emptycart" ng-if="order_fstatus==3">
-			<img ng-src="img/fail.png">
+			<img ng-src="main/assets/img/fail.png">
 			<p>You have payment process could not complete.</p>
 			<a ng-click="$ionicGoBack()" class="button button-balanced">Try Again</a><br/><br/>
 			<a ng-href="#/app/dashboard" class="button button-balanced">Continue Shopping</a>

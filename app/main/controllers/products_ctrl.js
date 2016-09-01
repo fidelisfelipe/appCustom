@@ -68,13 +68,13 @@ angular.module('starter.controllers')
 	}
 	
 	//------Sub categoryes Options-----
-	$ionicModal.fromTemplateUrl('js/products/products-cats.html', { scope: $scope })
+	$ionicModal.fromTemplateUrl('main/templates/products/products-cats.html', { scope: $scope })
 	.then(function(modal) { $scope.categoryModal = modal; });
 	$scope.catsClose = function() { $scope.categoryModal.hide(); };
 	$scope.catsShow = function() { $scope.categoryModal.show(); };
 
 	//------Sort Options-----
-	$ionicModal.fromTemplateUrl('js/products/products-sort.html', { scope: $scope })
+	$ionicModal.fromTemplateUrl('main/templates/products/products-sort.html', { scope: $scope })
 	.then(function(modal) { $scope.sortModal = modal; });
 	$scope.sortClose = function() { $scope.sortModal.hide(); };
 	$scope.sortShow = function() { 
