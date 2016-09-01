@@ -73,7 +73,7 @@ angular.module('starter.services')
       $scope.search = {};
       $scope.search.suggestions = [];
       $scope.search.query = "";
-      $ionicModal.fromTemplateUrl('js/location/location.html', {
+      $ionicModal.fromTemplateUrl('main/templates/location/location.html', {
         scope: $scope,
         focusFirstInput: true
       }).then(function(modal) {

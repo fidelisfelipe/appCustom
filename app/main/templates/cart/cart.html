@@ -21,7 +21,7 @@
 	<ion-content direction="y" class="cartSubContent"  scroll="true"   lazy-scroll>
 	<div class="list products" >
 		<div class="item item-thumbnail-left" ng-repeat="tmpObj in cartProducts">
-		  <img ng-src="{{tmpObj.image!=null ? tmpObj.image : 'img/no-image.jpg' }}" ng-click="showProductDetail(tmpObj.key);">
+		  <img ng-src="{{tmpObj.image!=null ? tmpObj.image : 'main/assets/img/no-image.jpg' }}" ng-click="showProductDetail(tmpObj.key);">
 		  <h2>{{tmpObj.name | lowercase}}</h2>
 		  <h3>{{tmpObj.manufacturer}}</h3>
 		  <h3 ng-if="tmpObj.weight">Weight : {{tmpObj.weight | number:2}} {{tmpObj.weight_class | lowercase}}</h3>
